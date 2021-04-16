@@ -1,0 +1,3 @@
+[submodule "zfsoft-sdk"]
+        path = zfsoft-sdk
+        url = https://gitee.com/shentuzhigang/zfsoft-sdk.git
