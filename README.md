@@ -1,4 +1,8 @@
-[English](README_en.md) | 简体中文
+简体中文 | [English](README_en.md)
+
+[![GitHub repo size](https://img.shields.io/github/repo-size/STZG19991208/MyZSTU)](https://github.com/STZG19991208/MyZSTU/archive/refs/heads/master.zip)
+[![GitHub license](https://img.shields.io/github/license/STZG19991208/MyZSTU)](https://github.com/STZG19991208/MyZSTU/blob/master/LICENSE)
+[![GitHub All Releases](https://img.shields.io/github/downloads/STZG19991208/MyZSTU/total)](https://github.com/STZG19991208/MyZSTU/releases)
 
 # 浙江理工大学信息服务调用项目
 
