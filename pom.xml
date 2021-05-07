@@ -6,6 +6,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>code-generator</module>
+        <module>myzstu-common</module>
+        <module>myzstu-mail</module>
+        <module>myzstu-mail-server</module>
+        <module>myzstu-robot</module>
     </modules>
     <groupId>club.zstuca.myzstu</groupId>
     <artifactId>myzstu-parent</artifactId>

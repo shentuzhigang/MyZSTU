@@ -1,4 +1,4 @@
-package club.zstuca.generator.mybatisplus;
+package club.zstuca.myzstu.generator.mybatisplus;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
