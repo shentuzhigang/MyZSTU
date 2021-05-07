@@ -1,0 +1,146 @@
+package ${package.Controller};
+
+import com.hailiu.web.bean.ResponseBean;
+import ${package.Entity}.${entity};
+import ${package.Service}.${table.serviceName};
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import org.springframework.web.bind.annotation.*;
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+import static com.hailiu.web.common.WebConstants.DEFAULT_PAGE_NUM;
+import static com.hailiu.web.common.WebConstants.PAGE_LIMIT;
+
+/**
+ * $!{table.comment} 前端控制器
+ *
+ * @author ${author}
+ * @version 1.0.0
+ * @date ${date} ${cfg.time}
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
+@Api(tags = "${entity}前端控制器")
+#if(${kotlin})
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+    private final ${table.serviceName} i${entity}Service;
+
+    public ${table.controllerName}(${table.serviceName} i${entity}Service) {
+        this.i${entity}Service = i${entity}Service;
+    }
+    
+    /**
+    * $!{table.comment}列表
+    * @return ResponseBean
+    */
+    @ApiOperation(value = "获取所有$!{table.comment}",notes = "获取所有$!{table.comment}")
+    @RequestMapping(value = "/list",method = {RequestMethod.GET})
+    public ResponseBean list(){
+        return ResponseBean.success(i${entity}Service.list());
+    }
+
+    /**
+     * $!{table.comment}分页
+     * @return ResponseBean
+     */
+    @ApiOperation(value = "$!{table.comment}分页查询",notes = "$!{table.comment}分页查询")
+    @ResponseBody
+    @RequestMapping(value = "/page",method = {RequestMethod.GET})
+    public ResponseBean page(@ApiParam(name = "page",value = "页数")
+                            @RequestParam(defaultValue = DEFAULT_PAGE_NUM) Integer page,
+                            @ApiParam(name = "size",value = "记录数")
+                            @RequestParam(defaultValue = PAGE_LIMIT) Integer size){
+        return ResponseBean.success(i${entity}Service.page(new Page<>(page,size)));
+    }
+    
+    #foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+    /**
+     * 获取指定$!{table.comment}
+     * @param id $!{table.comment}ID
+     * @return ResponseBean
+     */
+    @ApiOperation(value = "获取指定$!{table.comment}",notes = "获取指定$!{table.comment}")
+    @RequestMapping(value = "/{id}",method = {RequestMethod.GET})
+    public ResponseBean get(@PathVariable(value = "id") ${field.propertyType} id){
+        ${entity} ${table.entityPath} = i${entity}Service.getById(id);
+        if(${table.entityPath} != null){
+            return ResponseBean.success("查询成功",${table.entityPath});
+        }else{
+            return ResponseBean.error("查询失败");
+        }
+    }
+
+    /**
+     * 添加指定$!{table.comment}
+     * @param ${table.entityPath} $!{table.comment}
+     * @return ResponseBean
+     */
+    @ApiOperation(value = "添加指定$!{table.comment}",notes = "添加指定$!{table.comment}")
+    @RequestMapping(value = "/add",method = {RequestMethod.POST})
+    public ResponseBean post(@RequestBody ${entity} ${table.entityPath}){
+        ${table.entityPath}.setId(null);
+        if(i${entity}Service.save(${table.entityPath})){
+            return ResponseBean.success("添加成功", ${table.entityPath});
+        }else{
+            return ResponseBean.error("添加失败");
+        }
+    }
+
+    /**
+     * 更新指定$!{table.comment}
+     * @param id $!{table.comment}ID
+     * @param ${table.entityPath} $!{table.comment}
+     * @return ResponseBean
+     */
+    @ApiOperation(value = "更新指定$!{table.comment}",notes = "更新指定$!{table.comment}")
+    @RequestMapping(value = "/{id}",method = {RequestMethod.PUT})
+    public ResponseBean put(@PathVariable(value = "id") ${field.propertyType} id,@RequestBody ${entity} ${table.entityPath}){
+        ${table.entityPath}.setId(id);
+        if(i${entity}Service.updateById(${table.entityPath})){
+            return ResponseBean.success("更新成功");
+        }else{
+            return ResponseBean.error("更新失败");
+        }
+    }
+
+    /**
+     * 删除指定$!{table.comment}
+     * @param id $!{table.comment}ID
+     * @return ResponseBean
+     */
+    @ApiOperation(value = "删除指定$!{table.comment}",notes = "删除指定$!{table.comment}")
+    @RequestMapping(value = "/{id}",method = {RequestMethod.DELETE})
+    public ResponseBean delete(@PathVariable(value = "id") ${field.propertyType} id){
+        if(i${entity}Service.removeById(id)){
+            return ResponseBean.success("删除成功");
+        }else{
+            return ResponseBean.error("删除失败");
+        }
+    }
+    #end
+    #end
+}
+
+#end

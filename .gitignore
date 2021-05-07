@@ -309,3 +309,9 @@ cython_debug/
 
 !**/src/main/**
 !**/src/test/**
+
+**/logs/
+
+
+application-*.yml
+*-demo.properties
