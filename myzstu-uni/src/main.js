@@ -1,11 +1,13 @@
-import Vue from 'vue'
-import App from './App'
+import {
+    createApp
+} from 'vue'
 
-Vue.config.productionTip = false
+import App from './App.vue'
 
-App.mpType = 'app'
+import uView from "uview-ui";
 
-const app = new Vue({
-  ...App
-})
-app.$mount()
+const app = createApp(App)
+
+app.use(uView)
+
+app.mount()

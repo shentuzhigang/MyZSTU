@@ -1,6 +1,6 @@
 {
     "name" : "MyZSTU",
-    "appid" : "__UNI__D30A485",
+    "appid" : "__UNI__C710C78",
     "description" : "MyZSTU for ZSTU Student",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -55,15 +55,16 @@
     /* 快应用特有相关 */
     "mp-weixin" : {
         /* 微信小程序特有相关 */
-        "appid" : "wx62e4e19b3b761d52",
-        "setting" : {
-            "urlCheck" : true,
-            "postcss" : true,
-            "minified" : true,
-            "es6" : true
-        },
-        "usingComponents" : true,
-        "permission" : {}
+       "appid" : "wx62e4e19b3b761d52",
+       "setting" : {
+           "urlCheck" : true,
+           "enhance" : true,
+           "postcss" : true,
+           "minified" : true,
+           "es6" : true
+       },
+       "usingComponents" : true,
+       "permission" : {}
     },
     "mp-alipay" : {
         "usingComponents" : true
