@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
 
-    <artifactId>code-generator</artifactId>
+    <artifactId>myzstu-generator-mybatis-plus</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
