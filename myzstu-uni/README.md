@@ -1,5 +1,7 @@
 # myzstu-uni
 
+基于ZSTUHelper(浙理小助手)
+
 ## 安装uView
 因uView未支持Vue3，暂时使用下载安方式
 ### 下载uView 

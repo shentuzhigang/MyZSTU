@@ -1,20 +1,150 @@
 {
-	"easycom": {
-			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
-	},
-	"pages": [ 
-		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "MyZSTU"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "MyZSTU",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "easycom": {
+    "^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+  },
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "MyZSTU"
+      }
+    },
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "MyZSTU"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "个人中心"
+      }
+    },
+    {
+      "path": "pages/userform/userform",
+      "style": {
+        "navigationBarTitleText": "信息绑定",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/phone/phone",
+      "style": {
+        "navigationBarTitleText": "常用电话",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/about/about",
+      "style": {
+        "navigationBarTitleText": "关于我们",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/schcalendar/schcalendar",
+      "style": {
+        "navigationBarTitleText": "浙理校历",
+        "enablePullDownRefresh": false
+      }
+    }, 
+    {
+      "path": "pages/edu/course/course",
+      "style": {
+        "navigationBarTitleText": "课表",
+        "navigationBarBackgroundColor": "#fff",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/edu/score/score",
+      "style": {
+        "navigationBarTitleText": "成绩查询",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/edu/exam/exam",
+      "style": {
+        "navigationBarTitleText": "考试查询",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/lib/lib",
+      "style": {
+        "navigationBarTitleText": "掌上图书馆",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/ecard/ecard",
+      "style": {
+        "navigationBarTitleText": "校园一卡通",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/logs/logs",
+      "style": {
+        "navigationBarTitleText": "日志",
+        "enablePullDownRefresh": false
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "MyZSTU",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#FF6347"
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 12000
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#31c27c",
+    "borderStyle": "white",
+    "backgroundColor": "#FFFFFF",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "text": "首 页",
+        "selectedIconPath": "static/images/index-selected.png",
+        "iconPath": "static/images/index.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我 的",
+        "selectedIconPath": "static/images/mine-selected.png",
+        "iconPath": "static/images/mine.png"
+      }
+    ]
+  },
+  "condition": {
+    "current": -1,
+    "list": [{
+        "id": -1,
+        "name": "扫码进入",
+        "path": "pages/index/index",
+        "query": "",
+        "scene": "1011"
+      },
+      {
+        "id": -1,
+        "name": "1089",
+        "path": "pages/about/about",
+        "query": "",
+        "scene": "1089"
+      },
+      {
+        "id": -1,
+        "name": "个人中心",
+        "path": "pages/userform/userform"
+      }
+    ]
+  }
 }

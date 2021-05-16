@@ -8,13 +8,20 @@
 </template>
 
 <script>
-    export default {
-        setup() {
-            return {
-                title: 'Hello MyZSTU'
-            }
-        }
+  export default {
+    setup() {
+      return {
+        title: 'Hello MyZSTU'
+      }
+    },
+    onShow:function(){
+      setTimeout(function () {
+        uni.reLaunch({
+          url: '../home/home',
+        }) 
+      })
     }
+  }
 </script>
 
 <style>
