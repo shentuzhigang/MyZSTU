@@ -55,17 +55,17 @@
     /* 快应用特有相关 */
     "mp-weixin" : {
         /* 微信小程序特有相关 */
-       "appid" : "wx62e4e19b3b761d52",
-       "setting" : {
-           "urlCheck" : true,
-           "enhance" : true,
-           "postcss" : true,
-           "minified" : true,
-           "es6" : true
-       },
-       "usingComponents" : true,
-       "permission" : {},
-       "sitemapLocation": "sitemap.json"
+        "appid" : "wx17f90848a30d8529",
+        "setting" : {
+            "urlCheck" : true,
+            "enhance" : true,
+            "postcss" : true,
+            "minified" : true,
+            "es6" : true
+        },
+        "usingComponents" : true,
+        "permission" : {},
+        "sitemapLocation" : "sitemap.json"
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -84,6 +84,6 @@
             "minified" : true
         },
         "usingComponents" : true,
-        "sitemapLocation": "sitemap.json"
+        "sitemapLocation" : "sitemap.json"
     }
 }

@@ -2,9 +2,9 @@
 	<view class="container">
 	  <view class="userinfo">
       <button class="buttonstyle" 
-        v-if="!hasUserInfo && canIUse" 
-        open-type="getUserInfo" 
-        @getuserinfo="getUserInfo" 
+        v-if="!hasUserProfile" 
+        open-type="getUserProfile" 
+        @tap="getUserProfile" 
         lang="zh_CN">
         授权登录
       </button>
@@ -61,15 +61,24 @@
 		data() {
 			return {
 				userInfo: {},
-				hasUserInfo: false,
-				canIUse: uni.canIUse('button.open-type.getUserInfo')
+				hasUserProfile: false
 			}
 		},
 		methods: {
-      getUserInfo(e) {
-        app.globalData.userInfo = e.detail.userInfo
-        this.userInfo = e.detail.userInfo
-        this.hasUserInfo = true
+      getUserProfile(e) {
+        // https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801?idescene=6
+        uni.getUserProfile({
+          lang: 'zh_CN',
+          desc: '获取用户信息',
+          success: res => {
+            // 可以将 res 发送给后台解码出 unionId
+            console.log(res)
+            uni.setStorageSync('UserProfile',res.userInfo);
+            app.globalData.userInfo = res.userInfo
+            this.userInfo = res.userInfo
+            this.hasUserProfile = true
+          }
+        })
       },
 			clean(){
 			  var openid = uni.getStorageSync('openid');
@@ -96,19 +105,19 @@
     onShow: function (options) {
       if (app.globalData.userInfo) {
        this.userInfo = app.globalData.userInfo
-       this.hasUserInfo = true
+       this.hasUserProfile = true
       } else if (this.canIUse) {
         app.userInfoReadyCallback = res => {
           this.userInfo = res.userInfo
-          this.hasUserInfo = true
+          this.hasUserProfile = true
         }
       } else {
-        uni.getUserInfo({
+        uni.getUserProfile({
           lang: 'zh_CN',
           success: res => {
             app.globalData.userInfo = res.userInfo
             this.userInfo = res.userInfo
-            this.hasUserInfo = true
+            this.hasUserProfile = true
           }
         })
       }
