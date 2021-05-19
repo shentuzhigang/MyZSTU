@@ -15,7 +15,7 @@
       </view>
       <view class="tip" v-else>
           <text>{{tip}}</text>
-          <text style="font-size: small;">(点击查看全部课表)</text>
+          <text style="font-size: small;" v-if="binding">(点击查看全部课表)</text>
       </view>
     </navigator>
     <view class="title">教务查询</view>
@@ -46,13 +46,9 @@
 <script>
   const app = getApp()
   import util from '@/utils/util.js'
-  import {
-    RSAKey
-  } from '@/utils/rsa/rsa.js';
-  import {
-    b64tohex,
-    hex2b64
-  } from "@/utils/rsa/base64.js";
+  
+  import {getCourses} from '@/api/edu.js'
+  
   export default {
     data() {
       return {
@@ -64,6 +60,7 @@
         liburl: '/pages/lib/lib',
         currentWeek: 1,
         currentCourse: null,
+        binding: false
       }
     },
     computed: {
@@ -72,7 +69,7 @@
       }
     },
     created() {
-
+      this.binding = uni.getStorageSync("binding") == true
     },
     mounted() {
       var sid = uni.getStorageSync('sid')
@@ -133,7 +130,7 @@
         uni.showLoading({
           title: '拼命加载中...'
         })
-        this.getCourses()
+        getCourses()
           .then(courses => {
             this.getCurrentWeek()
               .then(week => {
@@ -150,78 +147,6 @@
               duration: 1500
             })
           })
-      },
-      getCourses: function() {
-        var sid = uni.getStorageSync('sid')
-        var edupw = uni.getStorageSync('edupw')
-        if (sid == null || sid == '' || edupw == null || edupw == '') {
-          return new Promise((resolve, reject) => {
-            reject('未绑定个人信息')
-          })
-        }
-        return new Promise((resolve, reject) => {
-          uni.getStorage({
-            key: 'courses'
-          }).then(res => {
-            if(res.data !== null && res.data !== ''){
-              console.log("从缓存中成功读取到了courses")
-              resolve(res.data)
-            }else{
-              throw '缓存数据错误'
-            }
-          }).catch(err => {
-            console.log("尝试从服务器获取courses")
-            // TODO 登录教务系统，并且获取课表
-            var rsaKey = new RSAKey();
-            uni.request({
-              url: app.globalData.server.edu + "/jwglxt/xtgl/login_getPublicKey.html?time=" + new Date()
-                .getTime(),
-              method: "GET",
-              withCredentials: true,
-              cookie: true
-            }).then(data => {
-              rsaKey.setPublic(b64tohex(data.data.modulus), b64tohex(data.data.exponent))
-              var enPassword = hex2b64(rsaKey.encrypt(edupw));
-              uni.request({
-                url: app.globalData.server.edu + '/jwglxt/xtgl/login_slogin.html',
-                method: "POST",
-                withCredentials: true,
-                cookie: true,
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded'
-                },
-                data: {
-                  yhm: sid,
-                  mm: enPassword
-                }
-              }).then(res => {
-                uni.request({
-                  url: app.globalData.server.edu +
-                    "/jwglxt/kbcx/xskbcx_cxXsKb.html?doType=query&gnmkdm=N2151",
-                  method: "POST",
-                  withCredentials: true,
-                  cookie: true,
-                  header: {
-                    'content-type': 'application/x-www-form-urlencoded'
-                  },
-                  data: {
-                    xnm: '2020',
-                    xqm: '12'
-                  }
-                }).then(data => {
-                  uni.setStorageSync("courses",data.data)
-                  resolve(data.data)
-                }).catch(err => {
-                  reject(err)
-                })
-              }).catch(err => {
-                reject(err)
-              })
-            }).catch(err => {
-              reject(err)
-            })
-          })
-        })
       },
       /**
        * 显示课表
