@@ -163,8 +163,12 @@
           uni.getStorage({
             key: 'courses'
           }).then(res => {
-            console.log("从缓存中成功读取到了courses")
-            resolve(res.data)
+            if(res.data !== null && res.data !== ''){
+              console.log("从缓存中成功读取到了courses")
+              resolve(res.data)
+            }else{
+              throw '缓存数据错误'
+            }
           }).catch(err => {
             console.log("尝试从服务器获取courses")
             // TODO 登录教务系统，并且获取课表
