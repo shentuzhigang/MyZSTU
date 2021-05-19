@@ -134,8 +134,8 @@
           .then(courses => {
             this.getCurrentWeek()
               .then(week => {
-                uni.hideLoading()
                 this.currentCourse = this.getCurrentCourse(courses,week)
+                uni.hideLoading()
               })
           })
           .catch(err => {
