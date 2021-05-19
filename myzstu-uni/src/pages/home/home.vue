@@ -164,7 +164,10 @@
           today = 7;
         }
         for (var i = 0; i < kb.length; i++) {
-          if (kb[i].xqj == today) {
+          var weeks =kb[i].zcd.split('-')
+          var start = parseInt(weeks[0])
+          var end = parseInt(weeks[1])
+          if (kb[i].xqj == today && (week >= start && week <= end)) {
             data.push(kb[i])
           }
         }
@@ -204,7 +207,7 @@
           var jcs = data[i].jcs.split('-')
           var start = jcs[0]
           var end = jcs[1]
-          for (var i = start; i < end; i++) {
+          for (var i = start; i <= end; i++) {
             times.push(i)
           }
           return {
