@@ -62,7 +62,8 @@
     "flyio": "^0.6.2",
     "regenerator-runtime": "^0.12.1",
     "vue": "^3.0.11",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "weapp-cookie": "^1.4.6"
   },
   "devDependencies": {
     "@dcloudio/types": "*",

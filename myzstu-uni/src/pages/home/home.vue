@@ -4,16 +4,19 @@
     <navigator class="coursecard" :url="courseurl">
       <view v-if="hasCourse">
         <view class="top">
-          <view class="content" >
-            <view class="course-item">课程名称: {{courseName}}</view>
-            <view class="course-item">上课时间: {{courseTime}}</view>
-            <view class="course-item">上课教师: {{courseTeacher}}</view>
-            <view class="course-item">上课地点: {{coursePlace}}</view>
+          <view class="content">
+            <view class="course-item">课程名称: {{currentCourse.name}}</view>
+            <view class="course-item">上课时间: {{currentCourse.time}}</view>
+            <view class="course-item">上课教师: {{currentCourse.teacher}}</view>
+            <view class="course-item">上课地点: {{currentCourse.place}}</view>
           </view>
         </view>
         <view class="bottom">点击查看全部课表</view>
       </view>
-      <view class="tip" v-else>{{tip}}</view>
+      <view class="tip" v-else>
+          <text>{{tip}}</text>
+          <text style="font-size: small;">(点击查看全部课表)</text>
+      </view>
     </navigator>
     <view class="title">教务查询</view>
     <view class="btn_group">
@@ -43,6 +46,13 @@
 <script>
   const app = getApp()
   import util from '@/utils/util.js'
+  import {
+    RSAKey
+  } from '@/utils/rsa/rsa.js';
+  import {
+    b64tohex,
+    hex2b64
+  } from "@/utils/rsa/base64.js";
   export default {
     data() {
       return {
@@ -52,183 +62,161 @@
         scoreurl: '/pages/edu/score/score',
         ecardurl: '/pages/ecard/ecard',
         liburl: '/pages/lib/lib',
-        courseName: '',
-        courseTime: '',
-        courseTeacher: '',
-        coursePlace: ''
+        currentWeek: 1,
+        currentCourse: null,
+      }
+    },
+    computed: {
+      hasCourse() {
+        return this.currentCourse != null
+      }
+    },
+    created() {
+
+    },
+    mounted() {
+      var sid = uni.getStorageSync('sid')
+      if (sid == null || sid == '') {
+        this.courseurl = '../userform/userform'
+        this.examurl = '../userform/userform'
+        this.scoreurl = '../userform/userform'
+        this.ecardurl = '../userform/userform'
+        this.liburl = '../userform/userform'
+        this.showTip('点击绑定个人信息')
+      } else {
+        var edupw = uni.getStorageSync('edupw')
+        if (edupw == null || edupw == '') {
+          this.courseurl = '../userform/userform'
+          this.examurl = '../userform/userform'
+          this.scoreurl = '../userform/userform'
+          this.showTip('点击绑定教务信息')
+        } else {
+          this.showCurrentCourse()
+        }
+
+        var ecardpw = uni.getStorageSync('ecardpw')
+        if (ecardpw == null || ecardpw == '') {
+          this.ecardurl = '../userform/userform'
+        }
+
+        var libpw = uni.getStorageSync('libpw')
+        if (libpw == null || libpw == '') {
+          this.liburl = '../userform/userform'
+        }
       }
     },
     methods: {
-      checkInfo() {
-        var sid = wx.getStorageSync('sid')
-        var edupw = wx.getStorageSync('edupw')
-        var ecardpw = wx.getStorageSync('ecardpw')
-        var ssopw = wx.getStorageSync('ssopw')
-        if (sid == null || sid == '' || edupw == null || edupw == '') {
-          this.setData({
-            courseurl: '../mine/userform/userform',
-            examurl: '../mine/userform/userform',
-            scoreurl: '../mine/userform/userform'
-          })
-          wx.setStorageSync('binding', false);
-        } else {
-          wx.setStorageSync('binding', true);
-        }
-        if (sid == null || sid == '' || ecardpw == null || ecardpw == '') {
-          this.setData({
-            ecardurl: '../mine/userform/userform'
-          })
-        }
-      },
-      showFailedTip: function() {
-        this.setData({
-          hasCourse: false,
-          tip: '数据获取失败,请稍后再试',
-        })
-      },
-      main: function(callback) {
-        //先得出今天是第几教学周
-        wx.showLoading({
-          title: '拼命加载中...',
-        })
-        var that = this
-        wx.request({
-          url: app.globalData.serverUrl + '/wx/firstday',
-          method: 'GET',
-          success: function(res) {
-            wx.hideLoading()
-            if (res.data.code == "200") {
-              var week = util.calcuateWeek(res.data.data)
-              callback(week)
+      getCurrentWeek: function() {
+        return new Promise((resolve, reject) => {
+          uniCloud.callFunction({
+            name: 'currentWeek'
+          }).then(res => {
+            if (res.result.code == 0) {
+              this.currentWeek = res.result.data
+              resolve(res.result.data)
             } else {
-              that.showFailedTip()
+              this.showTip('数据获取失败,请稍后再试')
+              reject('数据获取失败,请稍后再试')
             }
-          },
-          fail: function(err) {
+          }).catch(err => {
             console.log(err)
-            wx.hideLoading()
-            that.showFailedTip()
-          }
+            this.showTip('数据获取失败,请稍后再试')
+            reject(err)
+          })
         })
       },
-      getCourses: function(week) {
-        var courses = null
-        var that = this
-        wx.getStorage({
-          key: 'courses',
-          success: function(res) {
+      showTip: function(msg) {
+        this.currentCourse = null
+        this.tip = msg
+      },
+      showCurrentCourse: function() {
+        uni.showLoading({
+          title: '拼命加载中...'
+        })
+        this.getCourses()
+          .then(courses => {
+            this.getCurrentWeek()
+              .then(week => {
+                uni.hideLoading()
+                this.currentCourse = this.getCurrentCourse(courses,week)
+              })
+          })
+          .catch(err => {
+            uni.hideLoading()
+            this.showTip('数据获取失败,请稍后再试')
+            uni.showToast({
+              title: '无法获取课程信息，请稍后再试',
+              icon: 'none',
+              duration: 1500
+            })
+          })
+      },
+      getCourses: function() {
+        var sid = uni.getStorageSync('sid')
+        var edupw = uni.getStorageSync('edupw')
+        if (sid == null || sid == '' || edupw == null || edupw == '') {
+          return new Promise((resolve, reject) => {
+            reject('未绑定个人信息')
+          })
+        }
+        return new Promise((resolve, reject) => {
+          uni.getStorage({
+            key: 'courses'
+          }).then(res => {
             console.log("从缓存中成功读取到了courses")
-            courses = res.data
-            that.showCourses(courses, week)
-          },
-          fail: function(err) {
+            resolve(res.data)
+          }).catch(err => {
             console.log("尝试从服务器获取courses")
-            var openid = wx.getStorageSync('openid')
-            if (openid == '') {
-              wx.showToast({
-                title: '微信登陆失败',
-                icon: 'none',
-                duration: 2000
-              })
-            } else {
-              wx.showLoading({
-                title: '拼命加载中...',
-              })
-              wx.request({
-                url: app.globalData.serverUrl + '/wx/courses',
-                method: 'GET',
+            // TODO 登录教务系统，并且获取课表
+            var rsaKey = new RSAKey();
+            uni.request({
+              url: app.globalData.server.edu + "/jwglxt/xtgl/login_getPublicKey.html?time=" + new Date()
+                .getTime(),
+              method: "GET",
+              withCredentials: true,
+              cookie: true
+            }).then(data => {
+              rsaKey.setPublic(b64tohex(data.data.modulus), b64tohex(data.data.exponent))
+              var enPassword = hex2b64(rsaKey.encrypt(edupw));
+              uni.request({
+                url: app.globalData.server.edu + '/jwglxt/xtgl/login_slogin.html',
+                method: "POST",
+                withCredentials: true,
+                cookie: true,
                 header: {
                   'content-type': 'application/x-www-form-urlencoded'
                 },
                 data: {
-                  openid: openid
-                },
-                success: function(res) {
-                  wx.hideLoading()
-                  console.log(res.data)
-                  wx.hideLoading()
-                  if (res.data.code == "201") {
-                    wx.showToast({
-                      title: '学号错误,请重新绑定',
-                      icon: 'none',
-                      duration: 2000,
-                      success: function() {
-                        setTimeout(function() {
-                          wx.navigateTo({
-                            url: '../mine/userform/userform'
-                          })
-                        }, 1000)
-                      }
-                    })
-                  } else if (res.data.code == "202") {
-                    wx.showToast({
-                      title: '教务系统密码错误,请重新绑定',
-                      icon: 'none',
-                      duration: 2000,
-                      success: function() {
-                        setTimeout(function() {
-                          wx.navigateTo({
-                            url: '../mine/userform/userform'
-                          })
-                        }, 1000)
-                      }
-                    })
-                  } else if (res.data.code == "200") {
-                    if (res.data.data != null) {
-                      var courses = res.data.data
-                      console.log("ccccccc");
-                      console.log(res);
-                      that.showCourses(courses, week)
-                      wx.setStorageSync('courses', courses)
-                    }
-                  } else {
-                    wx.showLoading({
-                      title: '当前查询人数过多，将尝试读取本地缓存',
-                    })
-                    wx.getStorage({
-                      key: 'courses',
-                      success: function(res) {
-                        wx.hideLoading()
-                        var courses = res.data
-                        that.showCourses(courses, week)
-                      },
-                      fail: function(err) {
-                        wx.hideLoading()
-                        wx.showToast({
-                          title: '本地暂无缓存，请稍后再试',
-                          icon: 'none',
-                          duration: 1500
-                        })
-                      }
-                    })
-                  }
-                },
-                fail: function(err) {
-                  wx.hideLoading()
-                  wx.showLoading({
-                    title: '当前查询人数过多，将尝试读取本地缓存',
-                  })
-                  wx.getStorage({
-                    key: 'courses',
-                    success: function(res) {
-                      wx.hideLoading()
-                      var courses = res.data
-                      that.showCourses(courses, week)
-                    },
-                    fail: function(err) {
-                      wx.hideLoading()
-                      wx.showToast({
-                        title: '本地暂无缓存，请稍后再试',
-                        icon: 'none',
-                        duration: 1500
-                      })
-                    }
-                  })
+                  yhm: sid,
+                  mm: enPassword
                 }
+              }).then(res => {
+                uni.request({
+                  url: app.globalData.server.edu +
+                    "/jwglxt/kbcx/xskbcx_cxXsKb.html?doType=query&gnmkdm=N2151",
+                  method: "POST",
+                  withCredentials: true,
+                  cookie: true,
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  data: {
+                    xnm: '2020',
+                    xqm: '12'
+                  }
+                }).then(data => {
+                  uni.setStorageSync("courses",data.data)
+                  resolve(data.data)
+                }).catch(err => {
+                  reject(err)
+                })
+              }).catch(err => {
+                reject(err)
               })
-            }
-
-          }
+            }).catch(err => {
+              reject(err)
+            })
+          })
         })
       },
       /**
@@ -236,26 +224,28 @@
        * courses 
        * week 指当前是第几教学周
        */
-      showCourses: function(courses, week) {
+      getCurrentCourse: function(courses, week) {
         var that = this
+        var kb = courses.kbList
         var timeTable = app.globalData.timeTable
         var date = new Date()
-        var today = date.getDay() //今天星期几
+        var today = 4 // date.getDay() //今天星期几
         var data = [] //存放今天该上的课
         if (today == 0) {
           today = 7;
         }
-        for (var i = 0; i < courses.length; i++) {
-          if (courses[i].day == today && util.isCourseValid(courses[i], week)) {
-            data.push(courses[i])
+        for (var i = 0; i < kb.length; i++) {
+          if (kb[i].xqj == today) {
+            data.push(kb[i])
           }
-          if (courses[i].day == today && util.isCourseValid(courses[i], week)) {
-            data.push(courses[i])
-          }
+        }
+        if (data.length == 0) {
+          this.showTip('今日没课，好好休息哦!')
+          return null
         }
         //对今天要上的课按时间排序
         data.sort(function(a, b) {
-          return a.period - b.period;
+          return a.jcs - b.jcs;
         })
         var show = null
         //找到下一节要上或者正在上的课
@@ -264,60 +254,49 @@
           var year = now.getFullYear()
           var month = now.getMonth()
           var day = now.getDate()
-          var period = timeTable[parseInt(data[i].period) + parseInt(data[i].length) - 1]
-          var hour = period.split('.')[0]
-          var min = period.split('.')[1]
+          var period = timeTable[parseInt(data[i].jcs.split('-')[1])]
+          var hour = period.split(':')[0]
+          var min = period.split(':')[1]
           var time = new Date(year, month, day, hour, min, 0)
+          console.log(now)
+          console.log(time)
+          
           if (now - time < 0) {
             show = data[i]
             break;
           }
         }
-        if (data == '') {
-          var info = '今日没课，好好休息哦!'
-          this.setData({
-            hasCourse: false,
-            tip: info
-          })
+        console.log(show)
+        if (show == null) {
+          this.showTip('今天的课上完喽!')
+          return null
         } else {
-          if (show == null) {
-            var info = '今天的课上完喽!'
-            this.setData({
-              hasCourse: false,
-              tip: info
-            })
-          } else {
-            var times = []
-            for (var i = parseInt(show.period); i < parseInt(show.period) + parseInt(show.length); i++) {
-              times.push(i)
-            }
-            this.setData({
-              hasCourse: true,
-              courseName: show.name,
-              courseTime: show.week + '周 ' + '第' + times.join(',') + '节',
-              courseTeacher: show.teacher,
-              coursePlace: show.room
-            })
+          var times = []
+          var jcs = data[i].jcs.split('-')
+          var start = jcs[0]
+          var end = jcs[1]
+          for (var i = start; i < end; i++) {
+            times.push(i)
+          }
+          return {
+            name: show.kcmc,
+            time: show.zcd + '第' + times.join(',') + '节',
+            teacher: show.xm ? show.xm : "未安排",
+            place: show.cdmc ? show.cdmc : "未安排"
           }
         }
       }
     },
     onLoad: function(options) {
-      this.checkInfo()
+
     },
     onShow: function() {
-      //this.checkInfo()
-      var binding = wx.getStorageSync('binding')
-      if (binding) {
-        this.main(this.getCourses)
-      } else {
-        this.tip = '点击绑定个人信息'
-      }
+
     },
     onPullDownRefresh: function() {
 
     }
-  }  
+  }
 </script>
 
 <style>
@@ -344,7 +323,7 @@
     font-weight: bold;
   }
 
-  
+
 
   .btn_group {
     display: flex;
@@ -389,16 +368,19 @@
     border-radius: 12rpx;
     box-shadow: 8px 8px 5px rgb(223, 223, 223);
     text-align: center;
+
     .top {
       height: 300rpx;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+
       .content {
         display: flex;
         flex-direction: column;
         padding: 20rpx;
+        text-align: left;
         view {
           font-size: 32rpx;
           height: 60rpx;
@@ -406,11 +388,13 @@
         }
       }
     }
+
     .bottom {
       height: 80rpx;
       line-height: 80rpx;
       border-top: 1px dashed #fff;
     }
+
     .tip {
       display: flex;
       flex-direction: column;
