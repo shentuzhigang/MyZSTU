@@ -94,7 +94,9 @@ export function getCourses() {
               xqm: '12'
             }
           }).then(data => {
-            uni.setStorageSync("courses", data.data)
+            if(data.data!=null && data.data !='' ){
+              uni.setStorageSync("courses", data.data)
+            }
             resolve(data.data)
           }).catch(err => {
             reject(err)
@@ -143,8 +145,10 @@ export function getScores() {
               "queryModel.sortOrder": 'asc'
             }
           }).then(data => {
-            uni.setStorageSync("scores", data.data.items)
-            resolve(data.data)
+            if(data.data.items.length > 0 ){
+              uni.setStorageSync("scores", data.data.items)
+            }
+            resolve(data.data.items)
           }).catch(err => {
             reject(err)
           })
@@ -197,8 +201,10 @@ export function getExams() {
               "queryModel.sortOrder": 'asc'
             }
           }).then(data => {
-            uni.setStorageSync("exams", data.data.items)
-            resolve(data.data)
+            if(data.data.items.length > 0 ){
+              uni.setStorageSync("exams", data.data.items)
+            }
+            resolve(data.data.items)
           }).catch(err => {
             reject(err)
           })
