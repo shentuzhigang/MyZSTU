@@ -1,30 +1,59 @@
 <template>
-  <view class="examlist">
-    <view class="exam" v-for="item in examlist" :key="item.courseName">
-      <p class="examname">{{item.courseName}}</p>
-      <view class="examinfo">
-        <p>考试时间 : {{item.examTime}}
-        <p v-if="item.examTime.length == 1">暂未安排</p>
-        </p>
-        <p>考试地点 : {{item.examPlace}}
-        <p v-if="item.examPlace.length  == 1">暂未安排</p>
-        </p>
-        <p>考试座位 : {{item.seatNumber}}
-        <p v-if="item.seatNumber.length == 1">暂未安排</p>
-        </p>
+  <view class="container">
+    <view class="examlist" v-if="examlist.length > 0">
+      <view class="exam" v-for="item in examlist" :key="item.kcmc">
+        <view class="examname">{{item.kcmc}}</view>
+        <view class="examinfo">
+          <view>考试时间 : {{item.kssj}}
+            <view v-if="item.kssj.length == 1">暂未安排</view>
+          </view>
+          <view>考试地点 : {{item.cdmc}}
+            <view v-if="item.cdmc.length  == 1">暂未安排</view>
+          </view>
+          <view>考试座位 : {{item.zwh}}
+            <view v-if="item.zwh.length == 1">暂未安排</view>
+          </view>
+        </view>
       </view>
+    </view>
+    <view v-else class="no-exam-box">
+      本学期暂无考试
     </view>
   </view>
 </template>
 
 <script>
   const app = getApp()
+
+  import {
+    getExams
+  } from '@/api/edu.js'
+
   export default {
     data() {
       return {
-        success: false,
         examlist: []
       }
+    },
+    mounted() {
+      uni.showLoading({
+        title: '拼命加载中...',
+      })
+      getExams().then(exams => {
+        if (exams.length <= 0) {
+          uni.hideLoading()
+        } else {
+          this.examlist = exams
+          uni.hideLoading()
+        }
+      }).catch(err => {
+        uni.hideLoading()
+        uni.showToast({
+          title: '无法获取考试信息，请稍后再试',
+          icon: 'none',
+          duration: 1500
+        })
+      })
     },
     methods: {
 
@@ -47,110 +76,6 @@
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-      var that = this
-      var openid = wx.getStorageSync('openid')
-      if (openid == '') {
-        wx.showToast({
-          title: '微信登陆失败',
-          icon: 'none',
-          duration: 1500
-        })
-      } else {
-        wx.showLoading({
-          title: '拼命加载中...',
-        })
-        wx.request({
-          url: app.globalData.serverUrl + '/wx/exams',
-          method: 'GET',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          data: {
-            openid: openid
-          },
-          success: function(res) {
-            wx.hideLoading()
-            if (res.data.code == "201") {
-              wx.showToast({
-                title: '学号错误,请重新绑定',
-                icon: 'none',
-                duration: 2000,
-                success: function() {
-                  setTimeout(function() {
-                    wx.navigateTo({
-                      url: '../../mine/userform/userform'
-                    })
-                  }, 1500)
-                }
-              })
-            } else if (res.data.code == "202") {
-              wx.showToast({
-                title: '教务系统密码错误,请重新绑定',
-                icon: 'none',
-                duration: 2000,
-                success: function() {
-                  setTimeout(function() {
-                    wx.navigateTo({
-                      url: '../../mine/userform/userform'
-                    })
-                  }, 1500)
-                }
-              })
-            } else if (res.data.code == '200') {
-              if (res.data.data != null) {
-                that.setData({
-                  examlist: res.data.data
-                })
-                wx.setStorageSync('examlist', res.data.data)
-              }
-            } else {
-              wx.showLoading({
-                title: '当前查询人数过多，将尝试读取本地缓存',
-              })
-              wx.getStorage({
-                key: 'examlist',
-                success: function(res) {
-                  wx.hideLoading()
-                  that.setData({
-                    examlist: res.data
-                  })
-                },
-                fail: function() {
-                  wx.hideLoading()
-                  wx.showToast({
-                    title: '本地暂无缓存，请稍后再试',
-                    icon: 'none',
-                    duration: 1500
-                  })
-                }
-              })
-            }
-          },
-          fail: function(err) {
-            wx.hideLoading()
-            wx.showLoading({
-              title: '当前查询人数过多，将尝试读取本地缓存',
-            })
-            wx.getStorage({
-              key: 'examlist',
-              success: function(res) {
-                wx.hideLoading()
-                that.setData({
-                  examlist: res.data
-                })
-              },
-              fail: function() {
-                wx.hideLoading()
-                wx.showToast({
-                  title: '本地暂无缓存，请稍后再试',
-                  icon: 'none',
-                  duration: 1500
-                })
-              }
-            })
-          }
-        })
-      }
 
     },
     /**
@@ -190,50 +115,59 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   page {
     background: #FFF;
     padding-bottom: 30rpx;
   }
 
-  .examlist {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+  .container {
+    .examlist {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
 
-  .examlist .exam {
-    width: 96%;
-    display: flex;
-    flex-direction: column;
-    color: #000;
-    font-size: 32rpx;
-    margin: 10rpx auto;
-  }
+      .exam {
+        width: 96%;
+        display: flex;
+        flex-direction: column;
+        color: #000;
+        font-size: 32rpx;
+        margin: 10rpx auto;
 
-  .exam .examname {
-    height: 65rpx;
-    line-height: 65rpx;
-    background: #31c27c;
-    border: 1px solid #31c27c;
-    border-top-left-radius: 12rpx;
-    border-top-right-radius: 12rpx;
-    color: #fff;
-    padding: 10rpx;
-  }
+        .examname {
+          height: 65rpx;
+          line-height: 65rpx;
+          background: #31c27c;
+          border: 1px solid #31c27c;
+          border-top-left-radius: 12rpx;
+          border-top-right-radius: 12rpx;
+          color: #fff;
+          padding: 0 10rpx;
+        }
 
-  .exam .examinfo {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #31c27c;
-    background: #fff;
-    border-bottom-left-radius: 12rpx;
-    border-bottom-right-radius: 12rpx;
-    padding: 10rpx;
-  }
+        .examinfo {
+          display: flex;
+          flex-direction: column;
+          border: 1px solid #31c27c;
+          background: #fff;
+          border-bottom-left-radius: 12rpx;
+          border-bottom-right-radius: 12rpx;
+          padding: 10rpx;
 
-  .exam .examinfo p {
-    height: 65rpx;
-    line-height: 65rpx;
+          view {
+            line-height: 65rpx;
+          }
+        }
+      }
+    }
+
+    .no-exam-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>
