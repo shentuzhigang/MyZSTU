@@ -233,7 +233,7 @@
         var kb = courses.kbList
         var timeTable = app.globalData.timeTable
         var date = new Date()
-        var today = 4 // date.getDay() //今天星期几
+        var today = date.getDay() //今天星期几
         var data = [] //存放今天该上的课
         if (today == 0) {
           today = 7;
