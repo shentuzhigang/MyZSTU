@@ -99,7 +99,7 @@
     "navigationBarTitleText": "MyZSTU",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundTextStyle": "light",
-    "backgroundColor": "#FF6347"
+    "backgroundColor": "#FFFFFF"
   },
   "networkTimeout": {
     "request": 60000,
