@@ -56,11 +56,20 @@
       saveInfo: function() {
         var openid = uni.getStorageSync('openid')
         if (openid == "") {
+          // #ifdef MP-WEIXIN
           uni.showToast({
             title: '微信登录失败',
             icon: "none",
             duration: 1500
           })
+          // #endif
+          // #ifdef MP-QQ
+          uni.showToast({
+            title: 'QQ登录失败',
+            icon: "none",
+            duration: 1500
+          })
+          // #endif
         } else if (this.sid.length != 13) {
           uni.showToast({
             title: '请填写正确的学号',
