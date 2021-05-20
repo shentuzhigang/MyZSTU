@@ -64,8 +64,7 @@
             "es6" : true
         },
         "usingComponents" : true,
-        "permission" : {},
-        "sitemapLocation" : "sitemap.json"
+        "permission" : {}
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -81,9 +80,8 @@
         "setting" : {
             "es6" : true,
             "postcss" : true,
-            "minified" : true
-        },
-        "usingComponents" : true,
-        "sitemapLocation" : "sitemap.json"
+            "minified" : true,
+            "urlCheck" : true
+        }
     }
 }
