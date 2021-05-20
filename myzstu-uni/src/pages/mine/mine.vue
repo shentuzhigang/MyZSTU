@@ -1,13 +1,23 @@
 <template>
 	<view class="container">
 	  <view class="userinfo">
+      <!-- #ifdef MP-WEIXIN -->
       <button class="buttonstyle" 
         v-if="!hasUserProfile" 
-        open-type="getUserProfile" 
         @tap="getUserProfile" 
         lang="zh_CN">
         授权登录
       </button>
+      <!-- #endif -->
+      <!-- #ifndef MP-WEIXIN -->
+      <button class="buttonstyle"
+        v-if="!hasUserProfile" 
+        open-type="getUserInfo" 
+        @getuserinfo="getUserProfile" 
+        lang="zh_CN">
+        授权登录
+      </button>
+      <!-- #endif -->
       <block v-else>
         <image @tap="bindViewTap" 
           class="userinfo_avatar"
@@ -66,6 +76,7 @@
 		},
 		methods: {
       getUserProfile(e) {
+        // #ifdef MP-WEIXIN
         // https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801?idescene=6
         uni.getUserProfile({
           lang: 'zh_CN',
@@ -79,6 +90,14 @@
             this.hasUserProfile = true
           }
         })
+        // #endif
+        // #ifndef MP-WEIXIN
+        console.log(e)
+        uni.setStorageSync('UserProfile', e.detail.userInfo);
+        app.globalData.userInfo =  e.detail.userInfo
+        this.userInfo =  e.detail.userInfo
+        this.hasUserProfile = true
+        // #endif
       },
 			clean(){
 			  var openid = uni.getStorageSync('openid');
@@ -106,13 +125,20 @@
       if (app.globalData.userInfo) {
        this.userInfo = app.globalData.userInfo
        this.hasUserProfile = true
-      } else if (this.canIUse) {
-        app.userInfoReadyCallback = res => {
-          this.userInfo = res.userInfo
-          this.hasUserProfile = true
-        }
       } else {
+        // #ifdef MP-WEIXIN
         uni.getUserProfile({
+          lang: 'zh_CN',
+          desc: '获取用户信息',
+          success: res => {
+            app.globalData.userInfo = res.userInfo
+            this.userInfo = res.userInfo
+            this.hasUserProfile = true
+          }
+        })
+        // #endif
+        // #ifndef MP-WEIXIN
+        uni.getUserInfo({
           lang: 'zh_CN',
           success: res => {
             app.globalData.userInfo = res.userInfo
@@ -120,6 +146,7 @@
             this.hasUserProfile = true
           }
         })
+        // #endif
       }
     },
     
