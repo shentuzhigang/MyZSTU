@@ -14,7 +14,7 @@
         <input type="text" password="true" v-model="edupw" 
           placeholder="默认为身份证号后六位" placeholder-class='font-size: 34rpx;' />
       </view>
-      <view class='info-a'>
+<!--      <view class='info-a'>
         <text space="emsp"> 校园卡密码：</text>
         <input type="number" password="true" v-model="ecardpw" length="6"
           placeholder="默认为身份证号后六位" placeholder-class='font-size: 34rpx;'  />
@@ -28,15 +28,15 @@
         <text space="emsp">认证中心密码：</text>
         <input type="text" password="true" v-model="ssopw" 
           placeholder="默认为身份证号后六位" placeholder-class='font-size: 34rpx;' />
-      </view>
+      </view> -->
       <button @tap="saveInfo" id="savebtn" type="primary">
         <text space="emsp">确 认</text>
       </button>
-      <view class="tip">
+<!--      <view class="tip">
         <p>温馨提示：</p>
         <p>1、校园卡密码中的"X"用"0"代替</p>
         <p>2、认证中心指浙江理工大学统一身份认证网站（https://sso.zstu.edu.cn）</p>
-      </view>
+      </view> -->
     </view>
   </view>
 </template>

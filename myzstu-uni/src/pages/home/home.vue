@@ -29,7 +29,7 @@
         <view class="btn_info">成绩查询</view>
       </navigator>
     </view>
-    <view class="title">更多功能</view>
+<!--    <view class="title">更多功能</view>
     <view class="btn_group">
       <navigator class="btn ecard" :url="ecardurl">
         <image class="btn_icon" src="/static/images/ecard.svg"></image>
@@ -39,7 +39,7 @@
         <image class="btn_icon" src="/static/images/library.svg"></image>
         <view class="btn_info">掌上图书馆</view>
       </navigator>
-    </view>
+    </view> -->
   </view>
 </template>
 
