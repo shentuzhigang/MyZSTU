@@ -1,0 +1,58 @@
+page{
+  background:#FFF;
+  padding-bottom: 15rpx;
+}
+header{
+  text-align:center;
+}
+.container{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 34rpx;
+  margin:10rpx;
+
+}
+
+input{
+  width: 400rpx;
+  height: 90rpx;
+  border:#31c27c 1px solid;
+  border-radius:12rpx;
+  padding-left: 20rpx;
+}
+textarea{
+  width: 400rpx;
+  height: 90rpx;
+  border:#31c27c 1px solid;
+  border-radius:12rpx;
+  padding-left: 20rpx;
+}
+.submitbtn{
+  margin-top:40rpx;
+  width:50%;
+  height:90rpx;
+  line-height: 90rpx;
+  background-color:#31c27c;
+  font-size:36rpx;
+}
+.submitbtn :hover{
+  margin-top:40rpx;
+  width:50%;
+  height:90rpx;
+  line-height: 90rpx;
+  background-color:#000000;
+  font-size:36rpx;
+}
+.tip{
+  margin-top: 50rpx;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.tip p{
+  line-height: 70rpx;
+  color: rgb(112, 110, 110);
+  font-size: 30rpx;
+}

@@ -1,0 +1,26 @@
+page{
+  background:#FFF;
+  padding-bottom: 15rpx;
+}
+.header{
+  height: 15rpx;
+}
+.container{
+  position:fixed;
+  background:#FFF;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+}
+.slide-imageqmt{ 
+  width:90%; 
+  margin:20rpx auto;
+}
+.slide-imagezstuca{ 
+  width:50%; 
+  margin:20rpx auto;
+}
+#tip{
+  font-size:40rpx;
+  padding:15rpx;
+}

@@ -1,0 +1,78 @@
+page{
+  background:#FFF;
+  padding-bottom: 15rpx;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+}
+image{
+  width: 520rpx;
+  height: 120rpx;
+}
+.container{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 34rpx;
+}
+.info-a{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 15rpx auto; 
+}
+.info-a text{
+  float: left;
+}
+.info-a input{
+  height: 90rpx;
+  width: 400rpx;
+  line-height: 100rpx;
+  background: #FFF;
+  border:#31c27c 1px solid;
+  border-radius:12rpx;
+  padding-left: 20rpx;
+}
+.info-b{
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 15rpx 0; 
+}
+.info-b text{
+  float: left;
+}
+.info-b input{
+  width: 400rpx;
+  height: 90rpx;
+  border:#31c27c 1px solid;
+  border-radius:12rpx;
+  padding-left: 20rpx;
+}
+#savebtn{
+  margin-top:40rpx;
+  width:50%;
+  height:90rpx;
+  line-height: 90rpx;
+  background-color:#31c27c;
+  font-size:36rpx;
+}
+.tip{
+  margin-top: 50rpx;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.tip p{
+  height: 70rpx;
+  line-height: 70rpx;
+  color: rgb(112, 110, 110);
+  font-size: 30rpx;
+}

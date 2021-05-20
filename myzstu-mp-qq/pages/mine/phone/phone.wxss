@@ -1,0 +1,30 @@
+page{
+  background:#FFF;
+  padding-bottom: 15rpx;
+}
+.header{
+  height: 15rpx;
+}
+.container{
+  width:100%; 
+}
+.category{
+  font-size:45rpx;
+  text-align:left;
+  padding:20rpx;
+  color:#000;
+}
+.item{
+  width:90%;
+  color:#000;
+  display: flex;
+  text-align:center;
+  background:#fff;
+  border:1px solid #31c27c;
+  border-radius:10rpx;
+  padding:20rpx;
+  margin-bottom:15rpx;
+}
+.item .name{
+  margin-right:auto;
+}

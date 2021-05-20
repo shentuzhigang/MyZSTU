@@ -1,0 +1,92 @@
+.top {
+  display: flex;
+  flex-direction: row;
+  padding-left: 35rpx; 
+  background-color: #31c27c;
+  color: #fff;
+}
+.top-text {
+  width: 100rpx;
+  height: 35rpx;
+  font-size: 26rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.main{
+  height:1200rpx;
+  width:730rpx;
+  display:flex;
+}
+.flex-item {
+  width: 95rpx;
+  height: 200rpx;
+}
+.kcb-item {
+  position: absolute;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.period{
+  background-color:#31c27c;
+  color:#fff;
+}
+.smalltext {
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+}
+.scroll {
+  height: 1205rpx;
+  z-index: 100;
+  position: fixed;
+}
+.left {
+  width: 35rpx;
+  height: 100rpx;
+  font-size: 26rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+movable-area{
+  position: absolute;
+  z-index: 110;
+  top: 35rpx;
+  left: 35rpx;
+  height: 1170rpx; 
+  width: 715rpx; 
+  pointer-events: none;
+}
+movable-view{
+  width: 120rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+  background: #31c27c;
+  border-radius: 60rpx;
+  font-size: 28rpx;
+  text-align: center;
+  color: #fff;
+  pointer-events: auto;
+  opacity: 0.8;
+}
+modal .sjmodalcontent{
+  color: #000;
+  line-height: 60rpx;
+  margin-top: 15rpx;
+  border-bottom: 1px solid rgb(221, 217, 217);
+}
+modal .tip{
+  color: #000;
+  line-height: 60rpx;
+  text-align: center;
+}
+modal .modalcontent{
+  color: #000;
+  line-height: 60rpx;
+
+}
