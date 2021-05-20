@@ -26,7 +26,7 @@ Page({
       ecardpw: e.detail.value
     })
   },
-  /*libpwInput: function (e) {
+  libpwInput: function (e) {
     this.setData({
       libpw: e.detail.value
     })
@@ -35,7 +35,7 @@ Page({
     this.setData({
       ssopw: e.detail.value
     })
-  },*/
+  },
   saveInfo: function(){
     var that=this
     var openid=wx.getStorageSync('openid')
@@ -64,8 +64,8 @@ Page({
           sid: that.data.sid,
           edupw: that.data.edupw,
           ecardpw: that.data.ecardpw,
-          //libppw: that.data.libpw,
-          //ssopw: that.data.ssopw
+          libppw: that.data.libpw,
+          ssopw: that.data.ssopw
         },
         success: function (res) {
           wx.showToast({
@@ -84,8 +84,8 @@ Page({
             wx.setStorageSync('sid', that.data.sid);
             wx.setStorageSync('edupw', that.data.edupw);
             wx.setStorageSync('ecardpw', that.data.ecardpw);
-            //wx.setStorageSync('libpw', that.data.libpw);
-            //wx.setStorageSync('ssopw', that.data.ssopw);
+            wx.setStorageSync('libpw', that.data.libpw);
+            wx.setStorageSync('ssopw', that.data.ssopw);
           }
           catch (e) {
             console.log(e);
@@ -118,8 +118,8 @@ Page({
         sid: wx.getStorageSync('sid'),
         edupw: wx.getStorageSync('edupw'),
         ecardpw: wx.getStorageSync('ecardpw'),
-        //libpw: wx.getStorageSync('libpw'),
-        //ssopw: wx.getStorageSync('ssopw')
+        libpw: wx.getStorageSync('libpw'),
+        ssopw: wx.getStorageSync('ssopw')
       })
     }catch(e){
       console.log(e)

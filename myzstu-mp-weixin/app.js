@@ -75,7 +75,8 @@ App({
   globalData: {
     userInfo: null,
     //serverUrl:'https://www.dysaniacynic.cn/ZstuHelperTransfer',
-    serverUrl: 'http://127.0.0.1/ZstuHelper',
+    serverUrl: 'https://www.shentuzhigang.top:8443/MyZSTU',
+    //serverUrl: 'http://127.0.0.1/MyZSTU',
     timeTable:{
       1:'8.55',
       2:'9.45',

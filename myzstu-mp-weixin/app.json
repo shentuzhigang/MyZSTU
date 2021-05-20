@@ -5,13 +5,20 @@
     "pages/mine/setting",
     "pages/mine/userform/userform",
     "pages/index/courseinfo/courseinfo",
+    "pages/index/recommendedcourse/recommendedcourse",
     "pages/index/scoreinfo/scoreinfo",
     "pages/index/examinfo/examinfo",
     "pages/index/libinfo/libinfo",
     "pages/index/ecardinfo/ecardinfo",
     "pages/mine/aboutus/aboutus",
     "pages/mine/schcalendar/schcalendar",
-    "pages/mine/phone/phone"
+    "pages/mine/phone/phone",
+    "pages/addFunction/addFunction",
+    "pages/chooseLib/chooseLib",
+    "pages/databaseGuide/databaseGuide",
+    "pages/deployFunctions/deployFunctions",
+    "pages/im/im",
+    "pages/im/room/room"
   ],
   "window": {
     "backgroundTextStyle": "light",

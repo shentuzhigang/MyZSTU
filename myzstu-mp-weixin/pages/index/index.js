@@ -4,6 +4,7 @@ Page({
   data: {
     tip: '',
     courseurl: 'courseinfo/courseinfo',
+    recommendurl:'recommendedcourse/recommendedcourse',
     examurl: 'examinfo/examinfo',
     scoreurl: 'scoreinfo/scoreinfo',
     ecardurl: 'ecardinfo/ecardinfo',

@@ -17,7 +17,11 @@
     <navigator class="btn exam" url="{{examurl}}">
       <image class="btn_icon" src="../../images/exam.svg"></image>
       <view class="btn_info">考试查询</view>
-    </navigator>
+    </navigator> 
+    <!-- <navigator class="btn recommend" url="{{recommendurl}}">
+      <image class="btn_icon" src="../../images/exam.svg"></image>
+      <view class="btn_info">推荐课表</view>
+    </navigator> -->
     <navigator class="btn score" url="{{scoreurl}}">
       <image class="btn_icon" src="../../images/score.svg"></image>
       <view class="btn_info">成绩查询</view>
