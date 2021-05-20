@@ -82,7 +82,7 @@
               success: function() {
                 setTimeout(function() {
                   uni.reLaunch({
-                    url: '../home/home',
+                    url: '/pages/home/home',
                   })
                 }, 1000)
               }

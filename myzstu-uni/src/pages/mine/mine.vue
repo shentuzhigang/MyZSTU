@@ -92,7 +92,7 @@
 			    success: function () {
 			      setTimeout(function () {
 			        uni.reLaunch({
-			          url: '../index/index',
+			          url: '/pages/index/index',
 			        })
 			      }, 1000)
 			    }

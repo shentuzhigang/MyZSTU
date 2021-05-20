@@ -74,18 +74,18 @@
     mounted() {
       var sid = uni.getStorageSync('sid')
       if (sid == null || sid == '') {
-        this.courseurl = '../userform/userform'
-        this.examurl = '../userform/userform'
-        this.scoreurl = '../userform/userform'
-        this.ecardurl = '../userform/userform'
-        this.liburl = '../userform/userform'
+        this.courseurl = '/pages/userform/userform'
+        this.examurl = '/pages/userform/userform'
+        this.scoreurl = '/pages/userform/userform'
+        this.ecardurl = '/pages/userform/userform'
+        this.liburl = '/pages/userform/userform'
         this.showTip('点击绑定个人信息')
       } else {
         var edupw = uni.getStorageSync('edupw')
         if (edupw == null || edupw == '') {
-          this.courseurl = '../userform/userform'
-          this.examurl = '../userform/userform'
-          this.scoreurl = '../userform/userform'
+          this.courseurl = '/pages/userform/userform'
+          this.examurl = '/pages/userform/userform'
+          this.scoreurl = '/pages/userform/userform'
           this.showTip('点击绑定教务信息')
         } else {
           this.showCurrentCourse()
@@ -93,12 +93,12 @@
 
         var ecardpw = uni.getStorageSync('ecardpw')
         if (ecardpw == null || ecardpw == '') {
-          this.ecardurl = '../userform/userform'
+          this.ecardurl = '/pages/userform/userform'
         }
 
         var libpw = uni.getStorageSync('libpw')
         if (libpw == null || libpw == '') {
-          this.liburl = '../userform/userform'
+          this.liburl = '/pages/userform/userform'
         }
       }
     },
