@@ -19,7 +19,7 @@
         uni.reLaunch({
           url: '../home/home',
         }) 
-      })
+      },1000)
     }
   }
 </script>

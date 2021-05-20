@@ -63,7 +63,7 @@
         		},
         		fail(err) {
         			console.error('授权QQ失败：' + JSON.stringify(err));
-        			reject(new Error('微信QQ失败'))
+        			reject(new Error('授权QQ失败'))
         		}
         	})
           // #endif
