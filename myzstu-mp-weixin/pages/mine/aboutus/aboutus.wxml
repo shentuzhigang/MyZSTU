@@ -1,0 +1,10 @@
+<view class="header">
+</view>
+<view class="container">
+  <image src="../../../images/QMTCenter.jpg" class="slide-image" mode='{{mod[1]}}' bindload='imageLoad'></image>
+  <view id="tip">官方微信公众号: zstumc</view>
+  <view id="tip">工作室: 一号楼北楼531/545</view>
+  <view style="width:100%;position:absolute;bottom:0;">
+    <official-account></official-account>
+  </view>
+</view>

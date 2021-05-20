@@ -1,0 +1,119 @@
+page{
+  background:#FFF;
+  padding-bottom: 20rpx;
+}
+.container {
+  width:100%;
+  color:#000;
+  font-size: 32rpx;
+}
+.picker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #31c27c;
+  background:#fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 12rpx;
+  text-align: center;
+  padding: 0 20rpx;
+  letter-spacing: 5rpx;
+}
+.picker .down {
+  margin-left: 20rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.scoreinfo{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  border:1px solid #31c27c;
+  border-radius:12rpx;
+  background:#fff;
+  margin: 20rpx auto;
+  border-bottom: 0;
+}
+.scoreinfo .title{
+  text-align: center;
+  background: #31c27c;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #FFF;
+  border-bottom: 1px #fff solid;
+}
+.scoreinfo .header{
+  display: flex;
+  flex-direction:row;
+  background: #31c27c;
+  color: #FFF;
+}
+.scoreinfo .noscore{
+  text-align: center;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #000;
+  border-bottom: 1px #31c27c solid;
+}
+.scoreinfo .content{
+  display: flex;
+  flex-direction: row;
+}
+.scoreinfo .name{
+  width: 400rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-bottom: 1px solid #31c27c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.scoreinfo .credit, .scoreinfo .grade, .scoreinfo .gpa{
+  width: 110rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-left: 1px solid #31c27c;
+  border-bottom: 1px solid #31c27c;
+}
+.scoreinfo .header .credit, .scoreinfo .header .grade, .scoreinfo .header .gpa{
+  border-left: 1px solid #FFF;
+}
+.scoresum{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  border:1px solid #31c27c;
+  border-radius:12rpx;
+  background:#fff;
+  margin: 20rpx auto;
+  border-bottom: 0;
+}
+.scoresum .title{
+  text-align: center;
+  background: #31c27c;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #FFF;
+  border-bottom: 1px #fff solid;
+}
+.scoresum .content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-bottom: 1px solid #31c27c;
+}
+.scoresum .content .name{
+  border-right: 1px solid #31c27c;
+}
+.scoresum .content view{
+  width: 50%;
+}

@@ -1,0 +1,123 @@
+/* pages/index/libinfo/libinfo.wxss */
+page{
+  background:#FFF;
+  padding-bottom: 15rpx;
+}
+.container{
+  width:100%;
+  font-size: 32rpx;
+}
+.nav{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid rgb(221, 217, 217);
+}
+.nav view{
+  width: 30%;
+  text-align: center;
+}
+.nav .search-selectd, .nav .mine-selected{
+  color: #31c27c;
+  border-bottom: 8rpx solid #31c27c;
+}
+.nav .search, .nav .mine{
+  color: #000;
+  border-bottom: 0;
+}
+.search-contaniner{
+  display: flex;
+  flex-direction: column;
+}
+.search-contaniner .searchbar{
+  margin: 30rpx auto;
+  width: 94%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.search-contaniner .searchbar input{
+  width: 550rpx;
+  height: 80rpx;
+  border: 1px solid #31c27c;
+  border-top-left-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+  padding-left: 30rpx;
+}
+.search-contaniner .searchbar p{
+  width: 170rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #31c27c;
+  color: #fff;
+  text-align: center;
+  border: 1px solid #31c27c;
+  border-top-right-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+}
+.tip{
+  width: 100%;
+  color: #31c27c;
+  font-size: 30rpx;
+  text-align: center;
+  margin: 15rpx 0;
+}
+.res{
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+}
+.res .book{
+  width: 96%;
+  display:flex;
+  flex-direction:column;
+  color:#000;
+  font-size:32rpx;
+  margin: 10rpx auto;
+}
+.book .bookname{
+  line-height: 60rpx;
+  background: #31c27c;
+  border: 1px solid #31c27c;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+  color: #fff;
+  padding: 10rpx;
+}
+.book .bookinfo{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #31c27c;
+  background:#fff;
+  border-bottom-left-radius: 12rpx;
+  border-bottom-right-radius: 12rpx;
+  padding: 10rpx;
+}
+.book .bookinfo p{
+  height: 65rpx;
+  line-height: 65rpx;
+}
+
+.mine-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15rpx 0;
+}
+.title{
+  width: 96%;
+  color: #31c27c;
+  padding-left: 10rpx;
+  border-left: 8rpx solid #31c27c;
+  margin: 10rpx 0 15rpx 20rpx;
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.hsitory{
+  margin-top: 30rpx;
+}

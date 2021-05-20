@@ -1,0 +1,86 @@
+/**index.wxss**/
+page{
+  background:#FFF;
+  padding-bottom: 15rpx;
+}
+.container{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 34rpx;
+}
+.title{
+  width:700rpx;
+  color: #31c27c;
+  padding-left: 10rpx;
+  border-left: 8rpx solid #31c27c;
+  margin: 10rpx 0 15rpx 40rpx;
+  font-weight: bold;
+}
+.coursecard{
+  width: 90%;
+  background: #31c27c;
+  color: #FFF;
+  margin-bottom: 40rpx;
+  border-radius: 12rpx;
+  box-shadow: 8px 8px 5px rgb(223, 223, 223);
+}
+.coursecard .top{
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.coursecard .content{
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+}
+.coursecard .content view{
+  font-size: 32rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.coursecard .top .tip{
+  align-self: center;
+}
+.coursecard .bottom{
+  height: 80rpx;
+  line-height: 80rpx;
+  border-top: 1px dashed #fff;
+  text-align: center;
+}
+.btn_group {
+  display:flex;
+  flex-direction:row;
+  justify-content:space-around;
+  width:730rpx;
+  margin-bottom: 40rpx;
+}
+.btn{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  margin-top:15rpx;
+  margin-bottom:10rpx;
+  border-radius: 12rpx;
+  height:100rpx;
+  width:300rpx;
+  background:#fff;
+  box-shadow: 5px 5px 5px #E8E8E8;
+  border: 1px solid #F5F5F5;
+}
+.btn_icon{
+  width:60rpx;
+  height:60rpx;
+  margin-left:20rpx;
+}
+.btn_info{
+  margin-left:20rpx;
+  color:#000;
+}
+
+

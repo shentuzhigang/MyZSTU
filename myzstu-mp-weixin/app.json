@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/mine/setting",
+    "pages/mine/userform/userform",
+    "pages/index/courseinfo/courseinfo",
+    "pages/index/scoreinfo/scoreinfo",
+    "pages/index/examinfo/examinfo",
+    "pages/index/libinfo/libinfo",
+    "pages/index/ecardinfo/ecardinfo",
+    "pages/mine/aboutus/aboutus",
+    "pages/mine/schcalendar/schcalendar",
+    "pages/mine/phone/phone"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "浙理小助手",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FF6347"
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 12000
+  },
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#31c27c",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首 页",
+        "selectedIconPath": "images/index-selected.png",
+        "iconPath": "images/index.png"
+      },
+      {
+        "pagePath": "pages/mine/setting",
+        "text": "我 的",
+        "selectedIconPath": "images/mine-selected.png",
+        "iconPath": "images/mine.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

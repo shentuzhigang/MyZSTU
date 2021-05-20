@@ -1,0 +1,11 @@
+<view class="examlist" >
+  <view class="exam" wx:for="{{examlist}}">
+    <p class="examname">{{item.courseName}}</p>
+    <view class="examinfo">
+      <p>考试时间 :  {{item.examTime}}<p wx:if="{{item.examTime.length == 1}}">暂未安排</p></p>
+      <p>考试地点 : {{item.examPlace}}<p wx:if="{{item.examPlace.length  == 1}}">暂未安排</p></p>
+      <p>考试座位 : {{item.seatNumber}}<p wx:if="{{item.seatNumber.length == 1}}">暂未安排</p></p>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,44 @@
+page{
+  background:#FFF;
+  padding-bottom: 30rpx;
+}
+.examlist{
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+}
+.examlist .exam{
+  width: 96%;
+  display:flex;
+  flex-direction:column;
+  color:#000;
+  font-size:32rpx;
+  margin: 10rpx auto;
+}
+.exam .examname{
+  height: 65rpx;
+  line-height: 65rpx;
+  background: #31c27c;
+  border: 1px solid #31c27c;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+  color: #fff;
+  padding: 10rpx;
+}
+.exam .examinfo{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #31c27c;
+  background:#fff;
+  border-bottom-left-radius: 12rpx;
+  border-bottom-right-radius: 12rpx;
+  padding: 10rpx;
+}
+.exam .examinfo p{
+  height: 65rpx;
+  line-height: 65rpx;
+}
+
+
+
+
