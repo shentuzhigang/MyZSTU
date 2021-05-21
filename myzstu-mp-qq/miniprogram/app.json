@@ -3,24 +3,24 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/mine/setting",
-    "pages/mine/userform/userform",
-    "pages/index/courseinfo/courseinfo",
-    "pages/index/recommendedcourse/recommendedcourse",
-    "pages/index/scoreinfo/scoreinfo",
-    "pages/index/examinfo/examinfo",
-    "pages/index/libinfo/libinfo",
-    "pages/index/ecardinfo/ecardinfo",
-    "pages/index/reservation/reservation",
-    "pages/mine/aboutus/aboutus",
-    "pages/mine/schcalendar/schcalendar",
-    "pages/mine/phone/phone"
+    "pages/userform/userform",
+    "pages/courseinfo/courseinfo",
+    "pages/recommendedcourse/recommendedcourse",
+    "pages/scoreinfo/scoreinfo",
+    "pages/examinfo/examinfo",
+    "pages/libinfo/libinfo",
+    "pages/ecardinfo/ecardinfo",
+    "pages/reservation/reservation",
+    "pages/aboutus/aboutus",
+    "pages/schcalendar/schcalendar",
+    "pages/phone/phone"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "MyZSTU",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#FF6347"
+    "backgroundColor": "#ffffff"
   },
   "networkTimeout": {
     "request": 60000,
@@ -45,6 +45,5 @@
         "iconPath": "images/mine.png"
       }
     ]
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

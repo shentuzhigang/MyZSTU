@@ -1,5 +1,7 @@
 {
 	"description": "项目配置文件。",
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -11,7 +13,6 @@
 		"coverView": true,
 		"nodeModules": false,
 		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
 		"uglifyFileName": false,
 		"checkInvalidKey": true,
@@ -34,7 +35,6 @@
 		"userConfirmedBundleSwitch": false,
 		"packNpmManually": false,
 		"packNpmRelationList": [],
-		"minifyWXSS": true,
 		"remoteDebugLogEnable": false,
 		"prefetch": false
 	},
@@ -42,8 +42,6 @@
 	"libVersion": "2.3.0",
 	"projectname": "MyZSTU",
 	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"qqappid": "1110351554",
 	"scripts": {
 		"beforeCompile": "",
@@ -62,6 +60,9 @@
 		},
 		"game": {
 			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
 			"list": []
 		},
 		"miniprogram": {
@@ -85,7 +86,8 @@
 					"name": "个人中心",
 					"pathName": "pages/setting/userform/userform"
 				}
-			]
+			],
+			"current": -1
 		}
 	}
 }
