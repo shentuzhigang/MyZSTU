@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: myzstu-student
+  datasource:
+    username: myzstu
+    password: 123456
+    url: jdbc:mysql://localhost:3306/myzstu-student?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driverClassName: com.mysql.cj.jdbc.Driver
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+mybatis-plus:
+  mapper-locations: classpath*:/db/mapper/*.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: auto
+server:
+  port: 10100

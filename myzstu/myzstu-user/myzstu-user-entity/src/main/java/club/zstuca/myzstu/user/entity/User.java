@@ -8,8 +8,11 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
+ * 用户
+ *
  * @author ShenTuZhiGang
  * @version 1.0.0
  * @email 1600337300@qq.com
@@ -77,5 +80,12 @@ public class User implements Serializable {
     @ApiModelProperty(value = "更新时间")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
+
+    /**
+     * 角色列表
+     */
+    @ApiModelProperty(value = "角色列表")
+    @TableField(exist = false)
+    protected List<Role> roles;
 
 }

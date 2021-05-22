@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: myzstu-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 645f0af0-167d-4f26-9c52-ac317dfba41a
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: 645f0af0-167d-4f26-9c52-ac317dfba41a
