@@ -1,4 +1,4 @@
-package club.zstuca.myzstu.robot.listener;
+package club.zstuca.myzstu.boot.robot.listener;
 
 import love.forte.simbot.annotation.Listen;
 import love.forte.simbot.annotation.Listener;

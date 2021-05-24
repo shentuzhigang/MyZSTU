@@ -41,6 +41,7 @@
         <swagger.version>1.5.20</swagger.version>
         <swagger.v3.version>2.1.2</swagger.v3.version>
         <jackson.version>2.11.3</jackson.version>
+        <simbot.version>2.0.7</simbot.version>
     </properties>
 
     <dependencyManagement>
@@ -76,6 +77,13 @@
                 <version>1.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>love.forte.simple-robot</groupId>
+                <artifactId>parent</artifactId>
+                <version>${simbot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
             <!--MySQL-->
             <dependency>

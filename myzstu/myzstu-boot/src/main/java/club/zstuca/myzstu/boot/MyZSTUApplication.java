@@ -1,5 +1,6 @@
 package club.zstuca.myzstu.boot;
 
+import love.forte.simbot.spring.autoconfigure.EnableSimbot;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @email 1600337300@qq.com
  * @date 2021-05-23 19:08
  */
+@EnableSimbot
 @ComponentScan(basePackages = "club.zstuca.myzstu")
 @MapperScan(basePackages = "club.zstuca.myzstu.**.mapper")
 @SpringBootApplication
