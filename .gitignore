@@ -310,8 +310,8 @@ cython_debug/
 !**/src/main/**
 !**/src/test/**
 
-**/logs/
-
+logs/
+cache/
 
 application-*.yml
 *-demo.properties

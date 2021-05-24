@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: myzstu-robot
+  profiles:
+    active: dev
+simbot:
+  core:
+    bots: xxx:xxx
+    scan-package: club.zstuca.myzstu.robot.listener
+  show-logo: false
+  show-tips: false
