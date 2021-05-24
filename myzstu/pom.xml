@@ -15,6 +15,7 @@
         <module>myzstu-user</module>
         <module>myzstu-student</module>
         <module>myzstu-jwglxt</module>
+        <module>myzstu-boot</module>
     </modules>
     <groupId>club.zstuca.myzstu</groupId>
     <artifactId>myzstu-parent</artifactId>
@@ -25,7 +26,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <spring.boot.version>2.4.5</spring.boot.version>
+        <spring.boot.version>2.4.6</spring.boot.version>
         <spring.cloud.version>2020.0.0</spring.cloud.version>
         <java.version>1.8</java.version>
         <lombok.version>1.18.10</lombok.version>
@@ -121,17 +122,77 @@
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-annotations</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-common</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-user</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-user-entity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-user-mapper</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-user-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-user-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-entity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-mapper</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-web</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-jwglxt</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-jwglxt-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-jwglxt-web</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

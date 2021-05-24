@@ -29,22 +29,22 @@
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-user-entity</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-user-mapper</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-user-service</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-user-web</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

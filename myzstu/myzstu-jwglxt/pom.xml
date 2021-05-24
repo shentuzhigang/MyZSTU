@@ -33,12 +33,12 @@
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-jwglxt-service</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-jwglxt-web</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

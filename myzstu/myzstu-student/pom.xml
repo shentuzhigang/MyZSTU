@@ -26,26 +26,25 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-student-entity</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-student-mapper</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-student-service</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-student-web</artifactId>
-                <version>${version}</version>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

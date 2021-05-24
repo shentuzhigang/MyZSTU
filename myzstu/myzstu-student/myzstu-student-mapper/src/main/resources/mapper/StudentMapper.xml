@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.zstuca.myzstu.student.mapper.StudentMapper">
+
+    <!-- 通用查询映射结果 -->
+    <!--<resultMap id="BaseResultMap" type="cn.edu.zstu.myzstu.model.Student">-->
+        <!--<id column="学号" property="学号" />-->
+        <!--<result column="姓名" property="姓名" />-->
+        <!--<result column="性别" property="性别" />-->
+        <!--<result column="学院" property="学院" />-->
+        <!--<result column="系" property="系" />-->
+        <!--<result column="专业名称" property="专业名称" />-->
+        <!--<result column="行政班" property="行政班" />-->
+        <!--<result column="年级" property="年级" />-->
+        <!--<result column="学生类别" property="学生类别" />-->
+        <!--<result column="学制" property="学制" />-->
+        <!--<result column="学籍状态" property="学籍状态" />-->
+        <!--<result column="是否在校" property="是否在校" />-->
+        <!--<result column="是否注册" property="是否注册" />-->
+        <!--<result column="来源省" property="来源省" />-->
+        <!--<result column="毕业否" property="毕业否" />-->
+        <!--<result column="异动类别" property="异动类别" />-->
+        <!--<result column="QQ" property="qq" />-->
+        <!--<result column="WeChat" property="WeChat" />-->
+    <!--</resultMap>-->
+
+    <!--&lt;!&ndash; 通用查询结果列 &ndash;&gt;-->
+    <!--<sql id="Base_Column_List">-->
+        <!--学号, 姓名, 性别, 学院, 系, 专业名称, 行政班, 年级, 学生类别, 学制, 学籍状态, 是否在校, 是否注册, 来源省, 毕业否, 异动类别, QQ, WeChat-->
+    <!--</sql>-->
+
+</mapper>
