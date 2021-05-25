@@ -15,6 +15,12 @@
       "style": {
         "navigationBarTitleText": "MyZSTU"
       }
+    }, 
+    {
+      "path": "pages/find/find",
+      "style": {
+        "navigationBarTitleText": "发现"
+      }
     },
     {
       "path": "pages/mine/mine",
@@ -49,7 +55,7 @@
         "navigationBarTitleText": "浙理校历",
         "enablePullDownRefresh": false
       }
-    }, 
+    },
     {
       "path": "pages/edu/course/course",
       "style": {
@@ -107,7 +113,7 @@
   },
   "tabBar": {
     "color": "#707070",
-    "selectedColor": "#31c27c",
+    "selectedColor": "#1afa29",
     "borderStyle": "white",
     "backgroundColor": "#FFFFFF",
     "list": [{
@@ -115,6 +121,12 @@
         "text": "首 页",
         "selectedIconPath": "static/images/index-selected.png",
         "iconPath": "static/images/index.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发 现",
+        "selectedIconPath": "static/images/find-selected.png",
+        "iconPath": "static/images/find.png"
       },
       {
         "pagePath": "pages/mine/mine",
