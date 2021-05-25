@@ -215,3 +215,45 @@ export function getExams() {
   })
 }
 
+/**
+ * 获取推荐课表
+ */
+export function getrRecommendCourses(params) {
+  return new Promise((resolve, reject) => {
+  if(params == undefined || params === null){
+    reject("需要参数")
+  }else if(params.xnm == undefined){
+    params.xnm = '2020'
+  }else if(params.xqm == undefined){
+    params.xnm = '12'
+  }else if(params.xqh_id == undefined){
+    params.xqh_id = '1'
+  }else if(params.njdm_id == undefined || params.zyh_id == undefined || params.bh_id == undefined){
+    reject("需要参数njdm_id(年级代码，eg:2017)，zyh_id(专业代码，eg:3146)，bh_id(班级代码，eg:I171461)")
+  }
+  login()
+    .then(() => {
+      uni.request({
+        url: app.globalData.server.edu +
+          "/jwglxt/kbdy/bjkbdy_cxBjKb.html?gnmkdm=N214505",
+        method: "POST",
+        withCredentials: true,
+        cookie: true,
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        data: params
+      }).then(data => {
+        if(data.data!=null && data.data !='' ){
+          resolve(data.data)
+        }else{
+          reject("请求返回数据错误")
+        }
+      }).catch(err => {
+        reject(err)
+      })
+    }).catch(err => {
+      reject(err)
+    })
+  })
+}
