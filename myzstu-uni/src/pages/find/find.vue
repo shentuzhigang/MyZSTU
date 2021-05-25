@@ -3,10 +3,10 @@
 		<view class="header">
 		</view>
 		<view class="container">
-      <view class="category" v-for="i in list" :key="i.title">
+      <view class="category" v-for="i in list" :key="i.title" v-if="i.enable">
         <view class="title">{{i.title}}</view>
         <view class="btn_group">
-          <navigator class="btn" v-for="j in i.items" :key="j.url" :url="j.url">
+          <navigator class="btn" v-for="j in i.items" :key="j.url" v-if="j.enable" :url="j.url">
             <image class="btn_icon" :src="j.icon"></image>
             <view class="btn_info">{{j.text}}</view>
           </navigator>
@@ -22,37 +22,68 @@
 			return {
 				list: [
           {
+            title: "常用功能",
+            enable: true,
+            items:[
+              {
+                url:'/pages/edu/course/course',
+                icon: '/static/images/course.svg',
+                text: '课表查询',
+                enable: true
+              },
+              {
+                url:'/pages/schcalendar/schcalendar',
+                icon: '/static/images/calendar.svg',
+                text: '浙理校历',
+                enable: true
+              },
+              {
+                url:'/pages/edu/course/course',
+                icon: '/static/images/dumbbells.svg',
+                text: '锻炼查询',
+                enable: false
+              }
+            ]
+          },
+          {
             title: "教务查询",
+            enable: true,
             items: [
               {
                 url:'/pages/edu/course/course',
-                icon: '/static/images/exam.svg',
-                text: '课表查询'
+                icon: '/static/images/course.svg',
+                text: '课表查询',
+                enable: true
+              },
+              {
+                url:'/pages/edu/course/course',
+                icon: '/static/images/recommend.svg',
+                text: '推荐课表',
+                enable: false
               },
               {
                 url:'/pages/edu/course/course',
                 icon: '/static/images/exam.svg',
-                text: '推荐课表'
-              },
-              {
-                url:'/pages/edu/course/course',
-                icon: '/static/images/exam.svg',
-                text: '考试查询'
+                text: '考试查询',
+                enable: true
               },
               {
                 url:'/pages/edu/course/course',
                 icon: '/static/images/score.svg',
-                text: '成绩查询'
-              },
+                text: '成绩查询',
+                enable: true
+              }
+            ]
+          },
+          {
+            title:"体育查询",
+            enable: false,
+            items:[
               {
                 url:'/pages/edu/course/course',
-                icon: '/static/images/score.svg',
-                text: '课表查询'
-              },
-              {
-                url:'/pages/edu/course/course',
-                icon: '/static/images/score.svg',
-                text: '课表查询'
+                icon: '/static/images/dumbbells.svg',
+                text: '锻炼查询',
+                enable: false
               }
             ]
           }
@@ -134,7 +165,7 @@
         color: #31c27c;
         padding-left: 10rpx;
         border-left: 8rpx solid #31c27c;
-        margin: 10rpx 0 15rpx 40rpx;
+        margin: 10rpx 0 15rpx 20rpx;
         font-weight: bold;
       }
       .btn_group {
@@ -156,8 +187,6 @@
             padding: 10rpx;
             border-radius: 45rpx;
             background: #fff;
-            box-shadow: 5px 5px 5px #E8E8E8;
-            border: 1px solid #F5F5F5;
           }
           
           .btn_info {
