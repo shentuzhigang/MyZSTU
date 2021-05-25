@@ -89,6 +89,7 @@
         local: 'http://127.0.0.1/',
         romate: 'https://myzstu.zstuca.club',
         edu: 'https://www.shentuzhigang.top',
+        sports: 'http://tygl.zstu.edu.cn',
         lib: '',
         ecard: '',
         ezstu: '',
