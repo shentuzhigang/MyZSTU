@@ -62,13 +62,13 @@
                 enable: true
               },
               {
-                url:'/pages/edu/course/course',
+                url:'/pages/edu/exam/exam',
                 icon: '/static/images/exam.svg',
                 text: '考试查询',
                 enable: true
               },
               {
-                url:'/pages/edu/course/course',
+                url:'/pages/edu/score/score',
                 icon: '/static/images/score.svg',
                 text: '成绩查询',
                 enable: true
@@ -77,13 +77,13 @@
           },
           {
             title:"体育查询",
-            enable: false,
+            enable: true,
             items:[
               {
-                url:'/pages/edu/course/course',
+                url:'/pages/sports/exercise-record/exercise-record',
                 icon: '/static/images/dumbbells.svg',
                 text: '锻炼查询',
-                enable: false
+                enable: true
               }
             ]
           }

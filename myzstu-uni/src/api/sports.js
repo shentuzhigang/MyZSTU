@@ -59,7 +59,7 @@ export function stuInfoAndEvent() {
 /**
  * 获取锻炼数据
  */
-export function stuSelExerciseInfo() {
+export function stuSelExerciseInfo(eventno) {
   var sid = uni.getStorageSync('sid')
   return new Promise((resolve, reject) => {
     login()
@@ -75,10 +75,38 @@ export function stuSelExerciseInfo() {
           },
           data: {
             studentNo: sid,
-            eventno: -1
+            eventno: eventno == undefined?-1:eventno
           }
         }).then(data => {
           resolve(data.data)
+        }).catch(err => {
+          reject(err)
+        })
+      }).catch(err => {
+        reject(err)
+      })
+  })
+}
+
+
+/**
+ * 获取锻炼数据详细
+ */
+export function stuExerciseRecordDetail(runid) {
+  return new Promise((resolve, reject) => {
+    login()
+      .then(() => {
+        uni.request({
+          url: app.globalData.server.sports +
+            "/app//exercise/stuExerciseRecordDetail.php",
+          method: "GET",
+          withCredentials: true,
+          cookie: true,
+          data: {
+            runid:runid
+          }
+        }).then(data => {
+          resolve(JSON.parse(/var marker, lineArr= (.*)	\/\/ /.exec(data.data)[1]))
         }).catch(err => {
           reject(err)
         })

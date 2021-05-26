@@ -15,7 +15,7 @@
       "style": {
         "navigationBarTitleText": "MyZSTU"
       }
-    }, 
+    },
     {
       "path": "pages/find/find",
       "style": {
@@ -65,17 +65,15 @@
       }
     },
     {
-      "path" : "pages/edu/recommend/recommend",
-      "style" :                                                                                    
-      {
-          "navigationBarTitleText": "推荐课表",
-          "enablePullDownRefresh": false
-      } 
-    },{
-      "path" : "pages/edu/recommend/recommend-detail",
-      "style" :                                                                                    
-      {
-          "navigationBarTitleText": ""
+      "path": "pages/edu/recommend/recommend",
+      "style": {
+        "navigationBarTitleText": "推荐课表",
+        "enablePullDownRefresh": false
+      }
+    }, {
+      "path": "pages/edu/recommend/recommend-detail",
+      "style": {
+        "navigationBarTitleText": ""
       }
     },
     {
@@ -89,6 +87,20 @@
       "path": "pages/edu/exam/exam",
       "style": {
         "navigationBarTitleText": "考试查询",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/sports/exercise-record/exercise-record",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/sports/exercise-record/exercise-record-detail",
+      "style": {
+        "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
     },
@@ -114,6 +126,11 @@
       }
     }
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "MyZSTU",
