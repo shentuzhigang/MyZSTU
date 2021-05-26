@@ -18,3 +18,17 @@ export function isCourseValid(course, week) {
 	}
 	return false
 }
+/**
+ * 计算当前学年和学期
+ */
+export function nowSchoolYearAndTerm (){
+  let date=new Date;	//当前时间
+  let year=date.getFullYear();	//现在年份
+  let month=date.getMonth()+1;    //getMonth()获取当前月份(0-11,0代表1月)
+  return {
+    xnm : ''+(year - 1) ,
+    xnmmc: (year - 1) + '-' + year,
+    xqm: '' + (month<9? 12:3),
+    xqmmc: '' + (month<9? 2:1)
+  }
+}

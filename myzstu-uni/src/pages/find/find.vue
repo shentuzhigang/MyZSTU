@@ -56,10 +56,10 @@
                 enable: true
               },
               {
-                url:'/pages/edu/course/course',
+                url:'/pages/edu/recommend/recommend',
                 icon: '/static/images/recommend.svg',
                 text: '推荐课表',
-                enable: false
+                enable: true
               },
               {
                 url:'/pages/edu/course/course',

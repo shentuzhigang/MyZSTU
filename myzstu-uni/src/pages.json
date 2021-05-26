@@ -65,6 +65,20 @@
       }
     },
     {
+      "path" : "pages/edu/recommend/recommend",
+      "style" :                                                                                    
+      {
+          "navigationBarTitleText": "推荐课表",
+          "enablePullDownRefresh": false
+      } 
+    },{
+      "path" : "pages/edu/recommend/recommend-detail",
+      "style" :                                                                                    
+      {
+          "navigationBarTitleText": ""
+      }
+    },
+    {
       "path": "pages/edu/score/score",
       "style": {
         "navigationBarTitleText": "成绩查询",
