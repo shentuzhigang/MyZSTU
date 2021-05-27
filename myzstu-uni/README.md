@@ -1,12 +1,58 @@
 # myzstu-uni
 
-基于ZSTUHelper(浙理小助手)
+基于ZSTUHelper(浙理小助手)微信小程序
 
-## 安装uView
+## 技术栈
+
+- vue
+- uni-app
+- uniCloud
+
+## 已上线平台
+
+- [ ] Android
+
+- [ ] iOS
+
+- [ ] Web
+
+- [x] 微信小程序
+
+- [ ] 百度小程序
+
+- [ ] 支付宝小程序
+
+- [ ] 字节跳动小程序
+
+- [x] QQ小程序
+
+- [ ] 快应用
+
+- [ ] 360小程序
+
+## 已实现功能
+
+- [x] 课表查询
+- [x] 实时课表
+- [x] 考试查询
+- [x] 成绩查询
+- [x] 校历查询
+- [x] 常用电话查询
+- [x] 推荐课表查询
+- [x] 课外锻炼查询
+- [ ] 创新创业学分查询
+- [ ] 图书借还查询
+- [ ] 图书检索
+- [ ] 一卡通消费查询
+
+## Project setup
+
+### 安装uView
+
 因uView未支持Vue3，暂时使用下载安方式
-### 下载uView 
+#### 下载uView 
 [uView下载安装](https://www.uviewui.com/components/install.html#下载安装)
-### 修改index.js源代码
+#### 修改index.js源代码
 ```javasrcipt
 const install = Vue => {
 	Vue.mixin(mixin) 
@@ -31,7 +77,7 @@ const install = Vue => {
 }
 ```
 
-## Project setup
+### npm install
 ```
 npm install
 ```

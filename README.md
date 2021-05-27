@@ -8,6 +8,9 @@
 | 项目 | 描述 |
 |-----|----|
 |myzstu|综合性应用|
+|myzstu-uni|uni-app|
+|myzstu-mp-weixin|微信小程序|
+|myzstu-mp-qq|QQ小程序|
 |zfsoft-sdk|正方软件SDK|
 
 
