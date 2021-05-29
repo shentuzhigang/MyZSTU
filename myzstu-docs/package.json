@@ -1,0 +1,14 @@
+{
+  "name": "myzstu-docs",
+  "version": "1.0.0",
+  "description": "MyZSTU Docs",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "author": "ShenTuZhiGang",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.16"
+  }
+}
