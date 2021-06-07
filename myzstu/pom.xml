@@ -16,6 +16,7 @@
         <module>myzstu-student</module>
         <module>myzstu-jwglxt</module>
         <module>myzstu-boot</module>
+        <module>myzstu-spyder</module>
     </modules>
     <groupId>club.zstuca.myzstu</groupId>
     <artifactId>myzstu-parent</artifactId>
@@ -135,6 +136,11 @@
             <dependency>
                 <groupId>club.zstuca.myzstu</groupId>
                 <artifactId>myzstu-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
