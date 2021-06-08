@@ -5,6 +5,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author ShenTuZhiGang
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2021-05-23 19:08
  */
 @EnableSimbot
+@EnableScheduling
 @ComponentScan(basePackages = "club.zstuca.myzstu")
 @MapperScan(basePackages = "club.zstuca.myzstu.**.mapper")
 @SpringBootApplication

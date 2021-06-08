@@ -30,6 +30,10 @@
             <artifactId>myzstu-jwglxt-service</artifactId>
         </dependency>
         <dependency>
+            <groupId>club.zstuca.myzstu</groupId>
+            <artifactId>myzstu-spyder</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -65,6 +69,10 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
