@@ -279,8 +279,9 @@ cython_debug/
 !**/src/main/**
 !**/src/test/**
 
+.idea
 /logs/
 /cache/
-
+*.iml
 application-*.yml
 *-demo.properties
