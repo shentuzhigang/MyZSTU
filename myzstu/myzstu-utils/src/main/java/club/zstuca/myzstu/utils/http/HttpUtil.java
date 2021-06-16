@@ -3,10 +3,7 @@ package club.zstuca.myzstu.utils.http;
 
 import club.zstuca.myzstu.utils.core.StringUtil;
 import org.apache.commons.collections4.MapUtils;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
+import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.EntityBuilder;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -106,7 +103,7 @@ public class HttpUtil {
      * @param params      参数
      * @throws UnsupportedEncodingException
      */
-    private static void setEntity(HttpEntityEnclosingRequestBase httpRequest,
+    private static void setEntity(HttpEntityEnclosingRequest httpRequest,
                                   String type,
                                   Map<String, String> params)
             throws UnsupportedEncodingException {
@@ -120,6 +117,47 @@ public class HttpUtil {
             // 设置到请求的http对象中
             httpRequest.setEntity(new UrlEncodedFormEntity(nvps, ENCODING));
         }
+    }
+
+    /**
+     * Request
+     *
+     * @param url      URL
+     * @param header   请求头参数
+     * @param params   URL参数
+     * @param formData 表单参数
+     * @return HTTPResponse
+     */
+    protected static HttpResponse doRequest(String url,String method,
+                                                Map<String, String> header,
+                                                Map<String, String> params,
+                                                Map<String, String> formData,
+                                                HttpClientContext httpClientContext) {
+
+        CloseableHttpClient httpClient = null;
+        HttpResponse httpResponse = null;
+        try {
+            httpClient = HttpClientPool.getHttpClient();
+            HttpRequestBase httpRequest = null;
+            if(HttpGet.METHOD_NAME.equals(method)){
+                httpRequest = new HttpGet();
+            }else if(HttpPost.METHOD_NAME.equals(method)){
+                httpRequest = new HttpPost();
+            }else{
+                throw new RuntimeException("不支持的请求类型");
+            }
+            httpRequest.setConfig(requestConfig);
+            setParams(httpRequest, url, params);
+            setHeaders(httpRequest, header);
+            if(httpRequest instanceof HttpEntityEnclosingRequest){
+                setEntity((HttpEntityEnclosingRequest) httpRequest, "form-data", formData);
+            }
+            //发起请求
+            httpResponse = getResponse(httpClient, httpRequest, httpClientContext);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return httpResponse;
     }
 
     /**

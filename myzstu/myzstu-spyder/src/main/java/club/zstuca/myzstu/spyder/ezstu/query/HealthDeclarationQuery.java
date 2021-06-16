@@ -1,8 +1,8 @@
 package club.zstuca.myzstu.spyder.ezstu.query;
 
-import club.zstuca.myzstu.spyder.Consts;
-import club.zstuca.myzstu.spyder.ezstu.CallBack;
+import club.zstuca.myzstu.spyder.Constants;
 import club.zstuca.myzstu.spyder.ezstu.entity.Student;
+import club.zstuca.myzstu.spyder.ezstu.CallBack;
 import club.zstuca.myzstu.utils.http.HttpContext;
 import club.zstuca.myzstu.utils.http.HttpResponse;
 import com.alibaba.fastjson.JSONArray;
@@ -28,12 +28,12 @@ import java.util.Map;
  */
 @Component
 public class HealthDeclarationQuery {
-    private static final String EZSTU_DECISION = Consts.PROTOCOL + Consts.EZLHOST + "/webroot/decision";
+    private static final String EZSTU_DECISION = Constants.PROTOCOL + Constants.EZLHOST + "/webroot/decision";
     private static final String DOMAIN_CROSS_LOGIN_IN_URL = EZSTU_DECISION + "/login/cross/domain";
     private static final String VIEW_REPORT = EZSTU_DECISION + "/view/report";
     private static final String MOBOILE_VIEW = EZSTU_DECISION + "/url/mobile/view";
-    private static final String ezlUrl = Consts.PROTOCOL + Consts.EZLHOST + "/webroot/decision/view/report";
-    private static final String paramUrl = Consts.PROTOCOL + Consts.EZLHOST + "/webroot/decision/view/form?op=fr_dialog&cmd=parameters_d";
+    private static final String ezlUrl = Constants.PROTOCOL + Constants.EZLHOST + "/webroot/decision/view/report";
+    private static final String paramUrl = Constants.PROTOCOL + Constants.EZLHOST + "/webroot/decision/view/form?op=fr_dialog&cmd=parameters_d";
 
     public List<Student> getUndeclaredStudentList(String xueyuan, String nianji, String banji, String riqi) throws Exception {
         HttpContext httpContext = new HttpContext();
@@ -67,8 +67,8 @@ public class HealthDeclarationQuery {
         String sessionID = "";
 
         Map<String, String> header = new HashMap<>();
-        header.put("User-Agent", Consts.AGENT);
-        header.put("Host", Consts.EZLHOST);
+        header.put("User-Agent", Constants.AGENT);
+        header.put("Host", Constants.EZLHOST);
         header.put("Cookie", "fine_auth_token=" + callBack.getAccessToken());
         String reportUrl = VIEW_REPORT + "?op=h5_write" +
                 "&viewlet=/yewubanli/疫情未上报名单.cpt";
@@ -81,8 +81,8 @@ public class HealthDeclarationQuery {
         header.put("Referer", reportUrl);
 
 
-        header.put("User-Agent", Consts.AGENT);
-        header.put("Host", Consts.EZLHOST);
+        header.put("User-Agent", Constants.AGENT);
+        header.put("Host", Constants.EZLHOST);
         HttpResponse httpResponse = httpContext.doPost(
                 paramUrl, header, params);
         String status = JSONObject.parseObject(httpResponse.getContent()).getString("status");
@@ -113,8 +113,8 @@ public class HealthDeclarationQuery {
                 }
                 if (cells.getJSONObject(2).getString("text").equals(banji)) {
                     Student student = new Student();
-                    student.setUsername(cells.getJSONObject(0).getString("text"));
-                    student.setSname(cells.getJSONObject(1).getString("text"));
+                    student.setId(cells.getJSONObject(0).getString("text"));
+                    student.setName(cells.getJSONObject(1).getString("text"));
                     student.setStuClass(cells.getJSONObject(2).getString("text"));
                     students.add(student);
                 }

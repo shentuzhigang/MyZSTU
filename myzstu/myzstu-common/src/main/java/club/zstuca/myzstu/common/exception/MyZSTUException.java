@@ -7,6 +7,8 @@ package club.zstuca.myzstu.common.exception;
  */
 public class MyZSTUException extends Exception{
 
+    private static final long serialVersionUID = 1L;
+
     public MyZSTUException() {
         super();
     }

@@ -1,0 +1,34 @@
+{
+  "properties": [
+    {
+      "name": "qq.login.secret",
+      "type": "java.lang.String",
+      "description": "Description for qq.login.secret."
+    },
+    {
+      "name": "qq.login.grant-type",
+      "type": "java.lang.String",
+      "description": "Description for qq.login.grant-type."
+    },
+    {
+      "name": "qq.login.appid",
+      "type": "java.lang.String",
+      "description": "Description for qq.login.appid."
+    },
+    {
+      "name": "wx.login.secret",
+      "type": "java.lang.String",
+      "description": "Description for wx.login.secret."
+    },
+    {
+      "name": "wx.login.grant-type",
+      "type": "java.lang.String",
+      "description": "Description for wx.login.grant-type."
+    },
+    {
+      "name": "wx.login.appid",
+      "type": "java.lang.String",
+      "description": "Description for wx.login.appid."
+    }
+  ]
+}

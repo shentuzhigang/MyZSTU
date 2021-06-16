@@ -15,25 +15,25 @@ import java.io.Serializable;
  */
 @Data
 @Builder
-@ApiModel(value="基础响应对象类",description="基础响应对象类")
-public class R <T> implements Serializable {
-    
+@ApiModel(value = "基础响应对象类", description = "基础响应对象类")
+public class R<T> implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     /**
      * 状态码
      */
-    @ApiModelProperty(example="20000")
+    @ApiModelProperty(example = "20000")
     private Integer code;
     /**
      * 业务提示语
      */
-    @ApiModelProperty(example="成功")
+    @ApiModelProperty(example = "成功")
     private String msg;
     /**
      * 数据
      */
-    @ApiModelProperty(example="{}")
+    @ApiModelProperty(example = "{}")
     private T data;
 
     private R() {
@@ -54,20 +54,20 @@ public class R <T> implements Serializable {
         this.data = obj;
     }
 
-    public static <T> R<T> success() {
-        return success(BizCode.SUCCESS);
+    public static R<?> success() {
+        return build(BizCode.SUCCESS, null);
     }
 
-    public static <T>  R<T> success(BizCode biz) {
-        return build(biz, null);
+    public static <T> R<T> success(T obj) {
+        return build(BizCode.SUCCESS, obj);
     }
 
-    public static <T> R<T> error() {
-        return error(BizCode.ERROR);
+    public static R<?> error() {
+        return build(BizCode.ERROR, null);
     }
 
-    public static <T> R<T> error(BizCode biz) {
-        return build(biz, null);
+    public static <T> R<T> error(T obj) {
+        return build(BizCode.ERROR, obj);
     }
 
     public static <T> R<T> build(BizCode biz, T obj) {

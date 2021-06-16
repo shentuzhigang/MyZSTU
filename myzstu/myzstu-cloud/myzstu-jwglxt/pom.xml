@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>myzstu-cloud</artifactId>
+        <groupId>club.zstuca.myzstu</groupId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>myzstu-jwglxt-service</module>
+        <module>myzstu-jwglxt-web</module>
+    </modules>
+    <artifactId>myzstu-jwglxt</artifactId>
+    <name>MyZSTU jwglxt</name>
+    <description>对接教务管理系统服务</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <jwglxt.version>1.0-SNAPSHOT</jwglxt.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>club.zstuca</groupId>
+                <artifactId>jwglxt-sdk</artifactId>
+                <version>${jwglxt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-jwglxt-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-jwglxt-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

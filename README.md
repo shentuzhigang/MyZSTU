@@ -7,15 +7,18 @@
 # 浙江理工大学信息服务调用项目
 | 项目 | 描述 |
 |-----|----|
-|myzstu|综合性应用|
+|myzstu-boot|Spring Boot综合性应用|
+|myzstu-cloud|Spring Cloud综合性应用|
 |myzstu-uni|uni-app|
 |myzstu-mp-weixin|微信小程序|
 |myzstu-mp-qq|QQ小程序|
 |zfsoft-sdk|正方软件SDK|
+|myzstu-generator-mybatis-plus|代码生成器(MyBatis Plus版本)|
 
 
 ## 贡献代码
 我们非常欢迎你为本项目贡献代码，也十分感谢你的反馈。
 
 ## 参考项目
+- ZstuHelper
 

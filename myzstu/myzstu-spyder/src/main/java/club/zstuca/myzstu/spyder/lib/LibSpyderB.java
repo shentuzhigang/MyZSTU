@@ -1,7 +1,7 @@
 package club.zstuca.myzstu.spyder.lib;
 
 
-import club.zstuca.myzstu.spyder.Consts;
+import club.zstuca.myzstu.spyder.Constants;
 import club.zstuca.myzstu.spyder.lib.entity.BookRecord;
 import club.zstuca.myzstu.utils.http.HttpUtil;
 import com.alibaba.fastjson.JSONArray;
@@ -19,13 +19,13 @@ import java.util.Map;
 
 @Component
 public class LibSpyderB {
-	private static final String ezlUrl = Consts.PROTOCOL + Consts.EZLHOST +"/webroot/decision/view/report";
+	private static final String ezlUrl = Constants.PROTOCOL + Constants.EZLHOST +"/webroot/decision/view/report";
 
 	private String getSessionID(String sid) throws Exception {
 		String sessionid = "";
 		Map<String, String> header = new HashMap<>();
-		header.put("User-Agent", Consts.AGENT);
-		header.put("Host", Consts.EZLHOST);
+		header.put("User-Agent", Constants.AGENT);
+		header.put("Host", Constants.EZLHOST);
 		Map<String, String> params = new HashMap<>();
 		params.put("viewlet", "/yiban/S图书借阅情况查询.cpt");
 		params.put("__pi__", "true");
@@ -44,8 +44,8 @@ public class LibSpyderB {
 		List<BookRecord> historylist = new ArrayList<>();
 		String sessionid = getSessionID(sid);
 		Map<String, String> header = new HashMap<>();
-		header.put("User-Agent", Consts.AGENT);
-		header.put("Host", Consts.EZLHOST);
+		header.put("User-Agent", Constants.AGENT);
+		header.put("Host", Constants.EZLHOST);
 		header.put("sessionID", sessionid);
 		String htmlText = HttpUtil.doPost(ezlUrl, header, inputGetForm(sessionid, "1")).getContent();
 		//System.out.println(htmlText);

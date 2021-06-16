@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>myzstu-cloud</artifactId>
+        <groupId>club.zstuca.myzstu</groupId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>myzstu-student-entity</module>
+        <module>myzstu-student-mapper</module>
+        <module>myzstu-student-service</module>
+        <module>myzstu-student-web</module>
+    </modules>
+    <artifactId>myzstu-student</artifactId>
+    <name>MyZSTU Student</name>
+    <description>MyZSTU Student</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-entity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-mapper</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-student-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

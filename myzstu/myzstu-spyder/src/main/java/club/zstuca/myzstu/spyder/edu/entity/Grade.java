@@ -18,13 +18,15 @@ public class Grade {
 
     @Override
     public String toString() {
-        return "Grade{" +
-                "year='" + year + '\'' +
-                ", term='" + term + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", credit='" + credit + '\'' +
-                ", gpa='" + gpa + '\'' +
-                ", grade='" + grade + '\'' +
-                '}';
+        StringBuffer sf = new StringBuffer();
+        sf.append("{");
+        sf.append("\"学年\":" + this.year + ",");
+        sf.append("\"学期\":" + this.term + ",");
+        sf.append("\"课程名称\":" + this.courseName + ",");
+        sf.append("\"学分\":" + this.credit + ",");
+        sf.append("\"绩点\":" + this.gpa + ",");
+        sf.append("\"成绩\":" + this.grade);
+        sf.append("}");
+        return sf.toString();
     }
 }

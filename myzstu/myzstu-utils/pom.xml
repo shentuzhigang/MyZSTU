@@ -2,12 +2,14 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>myzstu-parent</artifactId>
-        <groupId>club.zstuca.myzstu</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>club.zstuca.myzstu</groupId>
+        <artifactId>myzstu-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>../myzstu-parent/pom.xml</relativePath>
+    </parent>
 
     <artifactId>myzstu-utils</artifactId>
 
@@ -59,4 +61,14 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>club.zstuca.myzstu</groupId>
+                <artifactId>myzstu-dependencies</artifactId>
+                <version>${revision}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

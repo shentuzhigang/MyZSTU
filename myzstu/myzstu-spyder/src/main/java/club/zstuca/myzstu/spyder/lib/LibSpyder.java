@@ -1,7 +1,7 @@
 package club.zstuca.myzstu.spyder.lib;
 
 
-import club.zstuca.myzstu.spyder.Consts;
+import club.zstuca.myzstu.spyder.Constants;
 import club.zstuca.myzstu.spyder.lib.entity.Book;
 import club.zstuca.myzstu.spyder.lib.entity.BookRecord;
 import club.zstuca.myzstu.utils.http.HttpUtil;
@@ -89,14 +89,14 @@ public class LibSpyder {
 	}
 
 	private String crawlBorrowList(String cookie) throws Exception {
-		String ssoLoginUrl = Consts.PROTOCOLS + Consts.SSOHOST + "/login";
-		String libLoginUrl = Consts.PROTOCOL + Consts.LIBHOST + "/reader/hwthau.php";
-		String searchBookUrl = Consts.PROTOCOL + Consts.LIBHOST +"/reader/book_lst.php";
+		String ssoLoginUrl = Constants.PROTOCOLS + Constants.SSOHOST + "/login";
+		String libLoginUrl = Constants.PROTOCOL + Constants.LIBHOST + "/reader/hwthau.php";
+		String searchBookUrl = Constants.PROTOCOL + Constants.LIBHOST +"/reader/book_lst.php";
 		Map<String, String> header = new HashMap<>();
 		System.out.println("我的cookie："+cookie);
-		//header.put("Origin", Consts.PROTOCOL + Consts.LIBHOST);
+		//header.put("Origin", Constants.PROTOCOL + Constants.LIBHOST);
 		//header.put("Referer", ssoLoginUrl + "?service=" + libLoginUrl);
-		header.put("Host", Consts.LIBHOST);
+		header.put("Host", Constants.LIBHOST);
 		header.put("cookie", cookie);
 		header.put("upgrade-insecure-requests", "1");
 		String htmlText = HttpUtil.doGet(searchBookUrl, header, null).getContent();
@@ -109,13 +109,13 @@ public class LibSpyder {
 //		String url = "http://10.11.35.23:8080/reader/book_lst.php";
 //		httpGet = new HttpGet(url);
 //		response = httpClient.execute(httpGet);
-//		res = Consts.printResponse(response);
+//		res = Constants.printResponse(response);
 //		return res;	
 	}
 
 	private String crawlBookInfo(String key) throws Exception {
 		System.out.println(key);
-		String searchBookUrl = Consts.PROTOCOL + Consts.LIBHOST +"/opac/openlink.php";
+		String searchBookUrl = Constants.PROTOCOL + Constants.LIBHOST +"/opac/openlink.php";
 		Map<String, String> params = new LinkedHashMap<>();
 		params.put("strSearchType", "title");
 		params.put("match_flag", "forward");

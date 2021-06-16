@@ -20,6 +20,7 @@ public class Course {
         sf.append("room:" + this.room + ",");
         sf.append("teacher:" + this.teacher + ",");
         sf.append("week:" + this.week + ",");
+        sf.append("teacher:" + this.teacher + ",");
         sf.append("period:" + this.period + ",");
         sf.append("length:" + this.length + "}");
         return sf.toString();

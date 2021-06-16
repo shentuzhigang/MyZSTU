@@ -1,5 +1,6 @@
 package club.zstuca.myzstu.utils.http;
 
+import club.zstuca.myzstu.utils.http.interceptor.UserAgentInterceptor;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
@@ -38,6 +39,11 @@ public class HttpClientPool {
      */
     private static SSLContextBuilder sslContextBuilder = null;
     private static BasicCookieStore basicCookieStore = null;
+
+    /**
+     * 拦截器
+     */
+    private static UserAgentInterceptor userAgentInterceptor = new UserAgentInterceptor();
 
     static {
         basicCookieStore = new BasicCookieStore();
@@ -86,6 +92,7 @@ public class HttpClientPool {
                 .setConnectionManager(poolingHttpClientConnectionManager)
                 .setConnectionManagerShared(true)
                 .setDefaultCookieStore(basicCookieStore)
+                .addInterceptorFirst(userAgentInterceptor)
                 .build();
     }
 
@@ -101,6 +108,7 @@ public class HttpClientPool {
                 .setConnectionManager(poolingHttpClientConnectionManager)
                 .setConnectionManagerShared(true)
                 .setDefaultCookieStore(basicCookieStore)
+                .addInterceptorFirst(userAgentInterceptor)
                 .build();
     }
 }
