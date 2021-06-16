@@ -19,7 +19,7 @@ public class Student {
     //学号
     private String username;
     //名字
-    private String sname;
+    private String name;
     //学院
     private String acadeemy;
     //专业
@@ -82,7 +82,7 @@ public class Student {
         builder.append(", sid=");
         builder.append(username);
         builder.append(", sname=");
-        builder.append(sname);
+        builder.append(name);
         builder.append(", acadeemy=");
         builder.append(acadeemy);
         builder.append(", major=");

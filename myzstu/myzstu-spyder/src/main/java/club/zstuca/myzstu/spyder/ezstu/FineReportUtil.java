@@ -1,6 +1,6 @@
 package club.zstuca.myzstu.spyder.ezstu;
 
-import club.zstuca.myzstu.spyder.Consts;
+import club.zstuca.myzstu.spyder.Constants;
 import club.zstuca.myzstu.utils.http.HttpUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -18,8 +18,8 @@ public class FineReportUtil {
     public static String getSessionID(String url, String username, String viewlet) throws Exception {
         String sessionid = "";
         Map<String, String> header = new HashMap<>();
-        header.put("User-Agent", Consts.AGENT);
-        header.put("Host", Consts.EZLHOST);
+        header.put("User-Agent", Constants.AGENT);
+        header.put("Host", Constants.EZLHOST);
         Map<String, String> params = new HashMap<>();
         params.put("viewlet", viewlet);
         params.put("__pi__", "true");

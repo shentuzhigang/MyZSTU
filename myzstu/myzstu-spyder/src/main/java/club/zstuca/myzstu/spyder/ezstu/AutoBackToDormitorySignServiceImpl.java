@@ -1,7 +1,7 @@
 package club.zstuca.myzstu.spyder.ezstu;
 
-import club.zstuca.myzstu.spyder.Consts;
-import club.zstuca.myzstu.spyder.ezstu.entity.Student;
+
+import club.zstuca.myzstu.spyder.Constants;
 import club.zstuca.myzstu.utils.http.HttpContext;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPObject;
@@ -24,7 +24,7 @@ import java.util.Random;
  */
 @Component
 public class AutoBackToDormitorySignServiceImpl {
-    private static final String EZSTU_DECISION = Consts.PROTOCOL + Consts.EZLHOST + "/webroot/decision";
+    private static final String EZSTU_DECISION = Constants.PROTOCOL + Constants.EZLHOST + "/webroot/decision";
     private static final String DOMAIN_CROSS_LOGIN_IN_URL = EZSTU_DECISION + "/login/cross/domain";
     private static final String VIEW_REPORT = EZSTU_DECISION + "/view/report";
     private static final String MOBOILE_VIEW = EZSTU_DECISION + "/url/mobile/view";
@@ -58,8 +58,8 @@ public class AutoBackToDormitorySignServiceImpl {
 
 
         Map<String, String> header = new HashMap<>();
-        header.put("User-Agent", Consts.AGENT);
-        header.put("Host", Consts.EZLHOST);
+        header.put("User-Agent", Constants.AGENT);
+        header.put("Host", Constants.EZLHOST);
         header.put("Cookie", "fine_auth_token=" + callBack.getAccessToken());
         String reportUrl = VIEW_REPORT + "?op=h5_write" +
                 "&viewlet=2017/baodaocheck_enter.cpt" +
@@ -114,9 +114,5 @@ public class AutoBackToDormitorySignServiceImpl {
         submitParams.put("reportXML", "%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%20%3F%3E%3CWorkBook%3E%3CVersion%3E6.5%3C%2FVersion%3E%3CReport%20class%3D%22com.fr.report.WorkSheet%22%20name%3D%220%22%3E%3CCellElementList%3E%3C%2FCellElementList%3E%3C%2FReport%3E%3C%2FWorkBook%3E");
         System.out.println(httpContext.doPost(VIEW_REPORT, header, null, submitParams));
         return true;
-    }
-
-    public Boolean student(Student student) throws Exception {
-        return autoService(student.getUsername(), student.getEcardPw());
     }
 }

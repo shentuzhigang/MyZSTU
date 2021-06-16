@@ -1,7 +1,9 @@
 package club.zstuca.myzstu.spyder.ecard;
 
-import club.zstuca.myzstu.spyder.Consts;
+import club.zstuca.myzstu.spyder.Constants;
 import club.zstuca.myzstu.spyder.ecard.entity.Consumption;
+import club.zstuca.myzstu.spyder.ecard.parser.EcardParser;
+import club.zstuca.myzstu.spyder.ecard.parser.YktParser;
 import club.zstuca.myzstu.utils.http.HttpUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -71,12 +73,12 @@ public class EcardSpyder {
     //解析获取基本信息
     private Map<String, Object> crawlAndParseBaseInfo(String cookie) throws Exception {
         Map<String, Object> baseInfo = new HashMap<>();
-        String balanceUrl = Consts.PROTOCOL + Consts.YKTHOST + "/SelfSearch/User/baseinfo.aspx";
+        String balanceUrl = Constants.PROTOCOL + Constants.YKTHOST + "/SelfSearch/User/baseinfo.aspx";
         Map<String, String> header = new HashMap<>();
-        header.put("User-Agent", Consts.AGENT);
-        header.put("Origin", Consts.PROTOCOL + Consts.YKTHOST);
-        header.put("Host", Consts.YKTHOST);
-        String referer = Consts.PROTOCOL + Consts.YKTHOST + "/SelfSearch/Index.aspx";
+        header.put("User-Agent", Constants.AGENT);
+        header.put("Origin", Constants.PROTOCOL + Constants.YKTHOST);
+        header.put("Host", Constants.YKTHOST);
+        String referer = Constants.PROTOCOL + Constants.YKTHOST + "/SelfSearch/Index.aspx";
         header.put("Referer", referer);
         //header.put("Cookie", cookie);
         String htmlText = HttpUtil.doGet(balanceUrl, header, null).getContent();
@@ -88,11 +90,11 @@ public class EcardSpyder {
     private List<Consumption> crawlAndParseConsumption(String cookie, String start, String end)
             throws Exception {
         List<Consumption> list = new ArrayList<Consumption>();
-        String consumptionUrl = Consts.PROTOCOL + Consts.YKTHOST + "/SelfSearch/User/ConsumeInfo.aspx";
+        String consumptionUrl = Constants.PROTOCOL + Constants.YKTHOST + "/SelfSearch/User/ConsumeInfo.aspx";
         Map<String, String> header = new HashMap<>();
-        header.put("User-Agent", Consts.AGENT);
-        header.put("Origin", Consts.PROTOCOL + Consts.YKTHOST);
-        header.put("Host", Consts.YKTHOST);
+        header.put("User-Agent", Constants.AGENT);
+        header.put("Origin", Constants.PROTOCOL + Constants.YKTHOST);
+        header.put("Host", Constants.YKTHOST);
         header.put("Referer", consumptionUrl);
         //header.put("Cookie", cookie);
         String htmlText = HttpUtil.doPost(consumptionUrl, header, null).getContent();
@@ -117,11 +119,11 @@ public class EcardSpyder {
     //消费明细解析（分页）
     private String crawlConsumptionByPage(String cookie, String viewstate, String eventvalidation,
                                           String start, String end, int page) throws Exception {
-        String consumptionUrl = Consts.PROTOCOL + Consts.YKTHOST + "/SelfSearch/User/ConsumeInfo.aspx";
+        String consumptionUrl = Constants.PROTOCOL + Constants.YKTHOST + "/SelfSearch/User/ConsumeInfo.aspx";
         Map<String, String> header = new HashMap<>();
-        header.put("User-Agent", Consts.AGENT);
-        header.put("Origin", Consts.PROTOCOL + Consts.YKTHOST);
-        header.put("Host", Consts.YKTHOST);
+        header.put("User-Agent", Constants.AGENT);
+        header.put("Origin", Constants.PROTOCOL + Constants.YKTHOST);
+        header.put("Host", Constants.YKTHOST);
         header.put("Referer", consumptionUrl);
         //header.put("Cookie", cookie);
         Map<String, String> dataBody = inputConsumptionForm(page, viewstate, eventvalidation, start, end);

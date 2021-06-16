@@ -39,7 +39,7 @@ public class CaptchaUtil {
         File newFile = new File(imgurl);
         try {
             res = instance.doOCR(newFile);
-            if(newFile.exists()) {
+            if (newFile.exists()) {
                 //newFile.delete();
             }
 
@@ -49,69 +49,64 @@ public class CaptchaUtil {
         System.out.println(res);
         return res.trim();
     }
-    public static void removeBackground(String imgUrl, String resUrl){
+
+    public static void removeBackground(String imgUrl, String resUrl) {
         //定义一个临界阈值
         int threshold = 300;
-        try{
+        try {
             BufferedImage img = ImageIO.read(new File(imgUrl));
             int width = img.getWidth();
             int height = img.getHeight();
-            for(int i = 1;i < width;i++){
-                for (int x = 0; x < width; x++){
-                    for (int y = 0; y < height; y++){
+            for (int i = 1; i < width; i++) {
+                for (int x = 0; x < width; x++) {
+                    for (int y = 0; y < height; y++) {
                         Color color = new Color(img.getRGB(x, y));
                         //System.out.println("red:"+color.getRed()+" | green:"+color.getGreen()+" | blue:"+color.getBlue());
-                        int num = color.getRed()+color.getGreen()+color.getBlue();
-                        if(num >= threshold){
+                        int num = color.getRed() + color.getGreen() + color.getBlue();
+                        if (num >= threshold) {
                             img.setRGB(x, y, Color.WHITE.getRGB());
                         }
                     }
                 }
             }
-            for(int i = 1;i<width;i++){
+            for (int i = 1; i < width; i++) {
                 Color color1 = new Color(img.getRGB(i, 1));
-                int num1 = color1.getRed()+color1.getGreen()+color1.getBlue();
-                for (int x = 0; x < width; x++)
-                {
-                    for (int y = 0; y < height; y++)
-                    {
+                int num1 = color1.getRed() + color1.getGreen() + color1.getBlue();
+                for (int x = 0; x < width; x++) {
+                    for (int y = 0; y < height; y++) {
                         Color color = new Color(img.getRGB(x, y));
 
-                        int num = color.getRed()+color.getGreen()+color.getBlue();
-                        if(num==num1){
+                        int num = color.getRed() + color.getGreen() + color.getBlue();
+                        if (num == num1) {
                             img.setRGB(x, y, Color.BLACK.getRGB());
-                        }else{
+                        } else {
                             img.setRGB(x, y, Color.WHITE.getRGB());
                         }
                     }
                 }
             }
             File file = new File(resUrl);
-            if (!file.exists())
-            {
+            if (!file.exists()) {
                 File dir = file.getParentFile();
-                if (!dir.exists())
-                {
+                if (!dir.exists()) {
                     dir.mkdirs();
                 }
-                try
-                {
+                try {
                     file.createNewFile();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
             ImageIO.write(img, "jpg", file);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static void cuttingImg(String imgUrl){
-        try{
-            File newfile=new File(imgUrl);
-            BufferedImage bufferedimage=ImageIO.read(newfile);
+
+    public static void cuttingImg(String imgUrl) {
+        try {
+            File newfile = new File(imgUrl);
+            BufferedImage bufferedimage = ImageIO.read(newfile);
             int width = bufferedimage.getWidth();
             int height = bufferedimage.getHeight();
 //            if (width > 198) {
@@ -124,9 +119,9 @@ public class CaptchaUtil {
 //                    bufferedimage=bufferedimage.getSubimage(0,(int) ((height - 48) / 2),(int) (width),(int) (height - (height - 48) / 2));
 //                }
 //            }
-            bufferedimage = bufferedimage.getSubimage(1,1,198,48);
+            bufferedimage = bufferedimage.getSubimage(1, 1, 198, 48);
             ImageIO.write(bufferedimage, "jpg", new File(imgUrl));
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

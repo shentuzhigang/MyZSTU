@@ -285,3 +285,5 @@ cython_debug/
 *.iml
 application-*.yml
 *-demo.properties
+
+*.flattened-pom.xml

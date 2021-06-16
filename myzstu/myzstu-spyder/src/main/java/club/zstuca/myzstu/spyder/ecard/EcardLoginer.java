@@ -1,6 +1,6 @@
 package club.zstuca.myzstu.spyder.ecard;
 
-import club.zstuca.myzstu.spyder.Consts;
+import club.zstuca.myzstu.spyder.Constants;
 import club.zstuca.myzstu.utils.captcha.CaptchaUtil;
 import club.zstuca.myzstu.utils.http.HttpResponse;
 import club.zstuca.myzstu.utils.http.HttpUtil;
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 //一卡通登录
 @Component
 public class EcardLoginer {
-    private static final String EcardLoginUrl = Consts.PROTOCOL + Consts.YKTHOST + "/SelfSearch/login.aspx";
+    private static final String EcardLoginUrl = Constants.PROTOCOL + Constants.YKTHOST + "/SelfSearch/login.aspx";
 
     public Map<String, Object> login(String username, String password) throws Exception {
         Map<String, Object> res = new HashMap<>();
@@ -30,12 +30,12 @@ public class EcardLoginer {
 
         //访问登录页面获取viewstate 和 eventvalidation的值
         Map<String, String> header1 = new HashMap<>();
-        header1.put("Host", Consts.YKTHOST);
+        header1.put("Host", Constants.YKTHOST);
         String htmlText1 = HttpUtil.doGet(EcardLoginUrl, header1, null).getContent();
         Map<String, String> keys = parseYktViewstateAndEventValidation0(htmlText1);
 
         //访问验证码页面
-        String code_url = Consts.PROTOCOL + Consts.YKTHOST + "/SelfSearch/validateimage.ashx?";
+        String code_url = Constants.PROTOCOL + Constants.YKTHOST + "/SelfSearch/validateimage.ashx?";
         String imgUrl = ResourceUtils.getURL("classpath:static").getPath() + File.separator + "codeimg" + File.separator;
         imgUrl += username + "-" + System.currentTimeMillis() + ".jpg";
         if (HttpUtil.download(code_url, imgUrl)) {
@@ -47,13 +47,12 @@ public class EcardLoginer {
         //访问登录页面，进行登录
 //		HttpPost httpPost = new HttpPost(EcardLoginUrl);
         Map<String, String> header3 = new HashMap<>();
-        header3.put("User-Agent", Consts.AGENT);
-        header3.put("Origin", Consts.PROTOCOL + Consts.EDUHOST);
+        header3.put("Origin", Constants.PROTOCOL + Constants.EDUHOST);
         header3.put("Referer", EcardLoginUrl);
-        header3.put("Host", Consts.YKTHOST);
+        header3.put("Host", Constants.YKTHOST);
 //		//header3.put("Cookie", cookie);
 //		//System.out.println(cookie);
-//		UrlEncodedFormEntity postEntity = new UrlEncodedFormEntity(inputLoginForm(stu, keys), Consts.ENCODING);
+//		UrlEncodedFormEntity postEntity = new UrlEncodedFormEntity(inputLoginForm(stu, keys), Constants.ENCODING);
 //		for (Map.Entry<String, String> headerEntry : header3.entrySet()) {
 //            httpPost.setHeader(headerEntry.getKey(), headerEntry.getValue());
 //        }
