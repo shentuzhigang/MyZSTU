@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zstu.mapper.StudentMapper">
+    <select id="getStudentById" parameterType="string" resultType="cn.edu.zstu.beans.Student">
+        select openid,sid,edupw,ecardpw from user where openid=#{openid}
+    </select>
+    <insert id="doCreate" parameterType="cn.edu.zstu.beans.Student">insert into user(openid,sid,ecardpw,edupw,libpw,ssopw)
+    	values(#{openid},#{sid},#{ecardPw},#{eduPw},"081639","081639")</insert>
+    <update id="doUpdate" parameterType="cn.edu.zstu.beans.Student">
+		update user set sid=#{sid},ecardpw=#{ecardPw},
+		edupw=#{eduPw} where openid=#{openid}
+    </update>
+    <delete id="deleteStudentById">
+    	
+    </delete>
+</mapper>
