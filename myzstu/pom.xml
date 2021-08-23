@@ -38,7 +38,7 @@
         <springfox.version>3.0.0</springfox.version>
         <okhttp.version>4.9.1</okhttp.version>
         <fastjson.version>1.2.76</fastjson.version>
-        <jsoup.version>1.9.2</jsoup.version>
+        <jsoup.version>1.14.2</jsoup.version>
         <swagger.version>1.5.20</swagger.version>
         <swagger.v3.version>2.1.2</swagger.v3.version>
         <jackson.version>2.11.3</jackson.version>
